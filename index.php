@@ -1,3 +1,4 @@
+<?php include 'creds.php'; ?>
 <!DOCTYPE html>
 <html lang="pl">
 <head>
