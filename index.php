@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home | Wypożyczalnia DVD</title>
 </head>
-<body style="background-color:#112,color:#fff">
+<body style="background-color:#112;color:#fff">
     <h1>Witaj świecie!</h1>
     <br>
     <p>Maciej</p>
