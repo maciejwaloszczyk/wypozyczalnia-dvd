@@ -14,5 +14,6 @@
     <p>Kamil</p>
     <p>Krzysiek</p>
     <h2>Hello world!</h2>
+    <a href="login.php?bref=index.php">Zaloguj</a>
 </body>
 </html>
