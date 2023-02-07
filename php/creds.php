@@ -1,5 +1,5 @@
 <?php
-define("USER","user1");
-define("PASSWD","passwd1");
-define("DBNAME","testdb");
+define("USER",'macwal04_administrator');
+define("PASSWD",'$g?nyADN-N6q');
+define("DBNAME",'macwal04_wypozyczalnia-dvd');
 ?>

@@ -1,3 +1,4 @@
+<?php include 'creds.php'; ?>
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -25,7 +26,7 @@
         $is_banned = 0;
         $is_archived = 0;
 
-        $database_connection = new mysqli('localhost:3306', 'macwal04_administrator', '$g?nyADN-N6q', 'macwal04_wypozyczalnia-dvd');
+        $database_connection = new mysqli('localhost:3306', USER, PASSWD, DBNAME);
         $ifExists = $database_connection -> query("SELECT id FROM users WHERE username LIKE '$username'");
         if (($ifExists -> fetch_assoc()) != NULL)
         {
