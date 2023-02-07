@@ -14,7 +14,7 @@
                         } 
                         else
                         {
-                            ?><li class="nav-item"><a class="nav-link" href="login.php?bref=index.php">Zaloguj</a></li><?php
+                            ?><li class="nav-item"><a class="nav-link" href="login.php?bref=<?= $_SERVER['PHP_SELF'] ?>">Zaloguj</a></li><?php
                         }
                         ?>
                         
