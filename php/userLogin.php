@@ -10,9 +10,9 @@
     <?php 
         if(isset($_POST["log"]))
         {
-            $conn=new mysqli("localhost",USER,PASSWD,DBNAME);
-            $a=$conn->query("SELECT * FROM USER WHERE {$_POST["InputEmail1"]}=email AND {$_POST["InputPassword1"]}=haslo;")->fetch_all(MYSQLI_ASSOC);
-            $conn->close();
+            $database_connection=new mysqli("localhost",USER,PASSWD,DBNAME);
+            $a=$database_connection->query("SELECT * FROM USER WHERE {$_POST["InputEmail1"]}=email AND {$_POST["InputPassword1"]}=haslo;")->fetch_all(MYSQLI_ASSOC);
+            $database_connection->close();
             if(Count($a)!=0)
             {
                 session_start();
