@@ -24,7 +24,7 @@
         if(isset($_POST["log"]))
         {
             $conn=new mysqli("localhost",USER,PASSWD,DBNAME);
-            $a=$conn->query("SELECT * FROM USER WHERE {$_POST["uname"]}=email AND {$_POST["pswd"]}=haslo;")->fetch_all(MYSQLI_ASSOC);
+            $a=$conn->query("SELECT * FROM users WHERE email='{$_POST["uname"]}' AND password='{$_POST["pswd"]}';")->fetch_all(MYSQLI_ASSOC);
             $conn->close();
             if(Count($a)!=0)
             {
