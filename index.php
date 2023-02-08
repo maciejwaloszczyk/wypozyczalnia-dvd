@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Small Business - Start Bootstrap Template</title>
+        <title>Wypożyczalnia DVD</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.png" />
         <!-- Core theme CSS (includes Bootstrap)-->
@@ -45,15 +45,25 @@
                       <span class="visually-hidden">Next</span>
                     </button>
                 </div>
-                <div class="col-lg-12">
+                <!-- <div class="col-lg-12">
                     <h1 class="font-weight-light">Business Name or Tagline</h1>
                     <p>This is a template that is great for small businesses. It doesn't have too much fancy flare to it, but it makes a great use of the standard Bootstrap core components. Feel free to use this template for any project you want!</p>
                     <a class="btn btn-primary" href="#!">Call to Action!</a>
-                </div>
+                </div> -->
             </div>
             <!-- Call to Action-->
-            <div class="card text-white bg-secondary my-5 py-4 text-center">
-                <div class="card-body"><p class="text-white m-0">This call to action card is a great place to showcase some important information or display a clever tagline!</p></div>
+            <div class="my-5 py-4">
+                <div class="card-body">
+                    <div class="input-group">
+                        <div class="form-outline">
+                            <input type="search" id="form1" class="form-control" />
+                            <label class="form-label" for="form1">Search</label>
+                        </div>
+                        <button type="button" class="btn btn-primary">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
             <!-- Content Row-->
             <div class="row gx-4 gx-lg-5">
