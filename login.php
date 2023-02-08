@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Small Business - Start Bootstrap Template</title>
+        <title>Wypożyczalnia DVD</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="assets/favicon.png" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
         <link href="css/styles_2.css" rel="stylesheet" />
@@ -29,26 +29,28 @@
             </div>
         </nav>
         <!-- Page Content-->
-        <div class="container px-4 py-4 px-lg-10">
-            <form>
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
-                </div>
-                <div class="mb-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
+        <div class="d-flex">
+            <div class="container px-4 py-4 px-lg-10 d-flex align-content-md-center">
+                <form>
+                    <div class="mb-3">
+                        <label for="InputEmail1" class="form-label">Adres e-mail</label>
+                        <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp">
+                        <div id="emailHelp" class="form-text">Nie udostępniamy nikomu twojego adresu e-mail, chyba, że Chińczycy zapytają...</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="InputPassword1" class="form-label">Hasło</label>
+                        <input type="password" class="form-control" id="InputPassword1">
+                    </div>
+                    <div class="mb-3">
+                        <div id="emailHelp" class="form-text"><a href="#!">Zapomniałeś hasła?</a></div>
+                        <div id="emailHelp" class="form-text"><a href="#!">Nie masz jeszcze konta?</a></div>
+                    </div>
+                    <button type="submit" class="btn btn-theme">Zaloguj się</button>
+                </form>
+            </div>
         </div>
         <!-- Footer-->
-        <footer class="py-5 bg-dark">
+        <footer class="py-5 bg-dark navbar fixed-bottom">
             <div class="container px-4 px-lg-5"><p class="m-0 text-center text-white">KNS Web Services &copy; Wypożyczalnia DVD 2023</p></div>
         </footer>
         <!-- Bootstrap core JS-->

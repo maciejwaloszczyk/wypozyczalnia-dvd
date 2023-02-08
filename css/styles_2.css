@@ -3034,6 +3034,13 @@ textarea.form-control-lg {
   background-color: #0d6efd;
   border-color: #0d6efd;
 }
+
+.btn-theme {
+  color: #fff;
+  background-color: #730CD3;
+  border-color: #730CD3;
+}
+
 .btn-primary:hover {
   color: #fff;
   background-color: #0b5ed7;
@@ -6916,6 +6923,10 @@ textarea.form-control-lg {
 
 .border-dark {
   border-color: #212529 !important;
+}
+
+.border-theme {
+  border-color: #730CD3 !important;
 }
 
 .border-white {
