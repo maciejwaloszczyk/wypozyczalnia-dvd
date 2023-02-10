@@ -14,37 +14,25 @@
     </head>
     <body>
         <!-- Responsive navbar-->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-info">
-            <div class="container px-5">
-                <a class="navbar-brand" href="#!">Wypożyczalnia DVD</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Strona główna</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Najnowsze</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Kontakt</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Profil</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        <?php include "php/header.php" ?>
         <!-- Page Content-->
         <div class="d-flex">
             <div class="container px-4 py-4 px-lg-10 d-flex align-content-md-center">
-                <form>
+                <form action="php/userLogin.php" method="POST">
                     <div class="mb-3">
                         <label for="InputEmail1" class="form-label">Adres e-mail</label>
-                        <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp">
+                        <input type="email" class="form-control" id="InputEmail1" name="InputEmail1" aria-describedby="emailHelp">
                         <div id="emailHelp" class="form-text">Nie udostępniamy nikomu twojego adresu e-mail, chyba, że Chińczycy zapytają...</div>
                     </div>
                     <div class="mb-3">
                         <label for="InputPassword1" class="form-label">Hasło</label>
-                        <input type="password" class="form-control" id="InputPassword1">
+                        <input type="password" class="form-control" id="InputPassword1" name="InputPassword1">
                     </div>
                     <div class="mb-3">
                         <div id="emailHelp" class="form-text"><a href="#!">Zapomniałeś hasła?</a></div>
                         <div id="emailHelp" class="form-text"><a href="#!">Nie masz jeszcze konta?</a></div>
                     </div>
+                    <input type="hidden" id="bref" name="bref" value="<?php echo $_GET['bref'];?>">
                     <button type="submit" class="btn btn-theme">Zaloguj się</button>
                 </form>
             </div>
