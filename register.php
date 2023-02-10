@@ -22,17 +22,23 @@
                     <div class="mb-3">
                         <label for="InputEmail1" class="form-label">Adres e-mail</label>
                         <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp">
-                        <div id="emailHelp" class="form-text">Nie udostępniamy nikomu twojego adresu e-mail, chyba, że Chińczycy zapytają...</div>
+                        <div id="emailHelp" class="form-text">Nie udostępniamy nikomu twojego adresu e-mail, chyba, że Chińczycy zapytają...</div>                    </div>
+                    <div class="mb-3">
+                        <label for="InputLogin1" class="form-label">Login</label>
+                        <input type="text" class="form-control" id="InputLogin1">
                     </div>
                     <div class="mb-3">
                         <label for="InputPassword1" class="form-label">Hasło</label>
                         <input type="password" class="form-control" id="InputPassword1">
                     </div>
                     <div class="mb-3">
-                        <div id="emailHelp" class="form-text"><a href="#!">Zapomniałeś hasła?</a></div>
-                        <div id="emailHelp" class="form-text"><a href="#!">Nie masz jeszcze konta?</a></div>
+                        <label for="InputPassword2" class="form-label">Powtórz Hasło</label>
+                        <input type="password" class="form-control" id="InputPassword2">
                     </div>
-                    <button type="submit" class="btn btn-theme">Zaloguj się</button>
+                    <div class="mb-3">
+                        <div id="emailHelp" class="form-text"><a href="#!">Masz już konto? Zaloguj się</a></div>
+                    </div>
+                    <button type="submit" class="btn btn-theme">Zarejestruj się</button>
                 </form>
             </div>
         </div>
