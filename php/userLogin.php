@@ -18,7 +18,8 @@
             $_SESSION["user"]=$a[0]["id"];
             header("Location: $bref");
         }
-        else echo "<script language='javascript'>alert('error3!');</script>";
+        //ZMIENIĆ PONIŻEJ PO PRZENIESIENIU
+        else header("Location: /wypozyczalnia-dvd/login.php?userLoginError=true&bref=$bref");
     ?>
 </body>
 </html>
