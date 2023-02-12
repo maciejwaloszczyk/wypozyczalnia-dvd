@@ -9,12 +9,12 @@
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.png" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
-        <link href="css/styles_2.css" rel="stylesheet" />
+        <link href="../css/styles.css" rel="stylesheet" />
+        <link href="../css/styles_2.css" rel="stylesheet" />
     </head>
     <body>
         <!-- Responsive navbar-->
-        <?php include "php/header.php" ?>
+        <?php include "../php/header.php" ?>
         <!-- Page Content-->
         <div class="d-flex">
             <div class="container px-4 py-4 px-lg-10 d-flex align-content-md-center">
