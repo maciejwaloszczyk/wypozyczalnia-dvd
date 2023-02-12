@@ -21,20 +21,20 @@
                 <form action="php/userRegister.php" method="POST">
                     <div class="mb-3">
                         <label for="InputEmail1" class="form-label">Adres e-mail</label>
-                        <input type="email" class="form-control" id="InputEmail1" name="InputEmail1" aria-describedby="emailHelp">
+                        <input type="email" class="form-control" id="InputEmail1" name="InputEmail1" aria-describedby="emailHelp" required>
                         <div id="emailHelp" class="form-text">Nie udostępniamy nikomu twojego adresu e-mail, chyba, że Chińczycy zapytają...</div>                    </div>
                     <div class="mb-3">
                         <label for="InputLogin1" class="form-label">Login</label>
-                        <input type="text" class="form-control" id="InputLogin1" name="InputLogin1">
+                        <input type="text" class="form-control" id="InputLogin1" name="InputLogin1" required>
                     </div>
                     <?php if (isset($_GET['userLoginError'])) echo '<div class="mb-3"><div id="userLoginError" class="form-text text-danger">Nazwa użytkownika nie jest dostępna</div></div>'; ?>
                     <div class="mb-3">
                         <label for="InputPassword1" class="form-label">Hasło</label>
-                        <input type="password" class="form-control" id="InputPassword1" name="InputPassword1">
+                        <input type="password" class="form-control" id="InputPassword1" name="InputPassword1" required>
                     </div>
                     <div class="mb-3">
                         <label for="InputPassword2" class="form-label">Powtórz Hasło</label>
-                        <input type="password" class="form-control" id="InputPassword2" name="InputPassword1">
+                        <input type="password" class="form-control" id="InputPassword2" name="InputPassword1" required>
                     </div>
                         <script>
                             var password = document.getElementById("InputPassword1"), confirm_password = document.getElementById("InputPassword2");
