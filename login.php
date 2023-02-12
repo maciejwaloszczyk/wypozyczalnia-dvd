@@ -18,20 +18,22 @@
         <!-- Page Content-->
         <div class="d-flex">
             <div class="container px-4 py-4 px-lg-10 d-flex align-content-md-center">
-                <form>
+                <form action="php/userLogin.php" method="POST">
                     <div class="mb-3">
                         <label for="InputEmail1" class="form-label">Adres e-mail</label>
-                        <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp">
+                        <input type="email" class="form-control" id="InputEmail1" name="InputEmail1" aria-describedby="emailHelp">
                         <div id="emailHelp" class="form-text">Nie udostępniamy nikomu twojego adresu e-mail, chyba, że Chińczycy zapytają...</div>
                     </div>
                     <div class="mb-3">
                         <label for="InputPassword1" class="form-label">Hasło</label>
-                        <input type="password" class="form-control" id="InputPassword1">
+                        <input type="password" class="form-control" id="InputPassword1" name="InputPassword1">
                     </div>
+                    <?php if (isset($_GET['userLoginError'])) echo '<div class="mb-3"><div id="userLoginError" class="form-text text-danger">Błędna nazwa użytkownika lub hasło</div></div>'; ?>
                     <div class="mb-3">
                         <div id="emailHelp" class="form-text"><a href="#!">Zapomniałeś hasła?</a></div>
                         <div id="emailHelp" class="form-text"><a href="#!">Nie masz jeszcze konta?</a></div>
                     </div>
+                    <input type="hidden" id="bref" name="bref" value="<?php echo $_GET['bref'];?>">
                     <button type="submit" class="btn btn-theme">Zaloguj się</button>
                 </form>
             </div>
