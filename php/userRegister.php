@@ -1,41 +1,20 @@
 <?php include 'creds.php'; ?>
-<!DOCTYPE html>
-<html lang="pl">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zarejestruj się...</title>
-</head>
-<body>
-    <!--
-    <form method="post">
-    <label for="username">Nazwa użytkownika: </label>    
-    <input type="text" id="username" name="username">
-    <label for="password">Hasło: </label>
-    <input type="text" id="password" name="password">
-    <input type="submit">
-    </form>
--->
     <?php
         extract($_POST);
-        $username = "example";
-        $password = "example";
-        $mail_address = "example";
-        $privileges = "EXMPL";
+        $privileges = "USER";
         $is_banned = 0;
         $is_archived = 0;
 
         $database_connection = new mysqli('localhost:3306', USER, PASSWD, DBNAME);
-        $ifExists = $database_connection -> query("SELECT id FROM users WHERE username LIKE '$username'");
+        $ifExists = $database_connection -> query("SELECT id FROM users WHERE username LIKE '$InputLogin1'");
+        var_dump($ifExists -> fetch_assoc());
         if (($ifExists -> fetch_assoc()) != NULL)
         {
-            echo "Nazwa użytkownika nie jest dostępna.";
+            header("Location: /wypozyczalnia-dvd/register.php?userLoginError=true");
         }
         else
         {
-            $result = $database_connection -> query("INSERT INTO users VALUES (NULL,'$username', '$password', '$mail_address', '$privileges', 0, 0)");
+            $result = $database_connection -> query("INSERT INTO users VALUES (NULL,'$InputLogin1', '$InputPassword1', '$InputEmail1', '$privileges', 0, 0)");
+            header("Location: /wypozyczalnia-dvd/index.php");
         }
     ?>
-</body>
-</html>
