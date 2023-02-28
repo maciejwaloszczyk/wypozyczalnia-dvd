@@ -16,6 +16,7 @@
         {
             session_start();
             $_SESSION["user"]=$a[0]["id"];
+            $_SESSION["privileges"]=$a[0]["privileges"];
             header("Location: $bref");
         }
         //ZMIENIĆ PONIŻEJ PO PRZENIESIENIU
