@@ -19,7 +19,9 @@ session_start();
         <li><a>Lista Filmów</a></li>
         <li><a>Lista Użytkowników</a></li>
         <li><a href="addMovie.php">Dodaj Film</a></li>
-        <li></li>
+        <li><a href="deleteMovie.php">Usuń Konkretny Film</a></li>
+        <li><a href="">Zmien Konkretny Film</a></li>
+        <li><a href="">Użytkownicy z Zaległościami</a></li>
     </ul>
 </body>
 </html>
