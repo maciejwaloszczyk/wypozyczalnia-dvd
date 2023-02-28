@@ -14,5 +14,6 @@ session_start();
         header("Location: /wypozyczalnia-dvd/index.php");
     }
     ?>
+    <p><a href="adminBoard.php">Wróć do panelu administratora</a></p>
 </body>
 </html>
