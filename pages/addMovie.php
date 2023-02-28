@@ -37,6 +37,7 @@
         <input type="text" name="photodir" id="photodir" placeholder="Photo directory">
         <input type="submit" value="Dodaj" name="Dodaj">
     </form>
+    <p><a href="adminBoard.php">Wróć do panelu administratora</a></p>
     <?php
     if(isset($_POST["Dodaj"]))
     {

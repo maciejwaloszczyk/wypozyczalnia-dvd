@@ -22,6 +22,7 @@
         <input type="number" name="year" id="year" min="1900" max="10000" step="1" placeholder="Year of release">
         <input type="text" name="director" id="director" placeholder="Director">
     </form>
+    <p><a href="adminBoard.php">Wróć do panelu administratora</a></p>
     <?php
     if(isset($_POST["Delete"]))
     {
