@@ -10,7 +10,7 @@
     <?php
         extract($_POST);
         $database_connection=new mysqli("localhost",USER,PASSWD,DBNAME);
-        $a=$database_connection->query("SELECT * FROM users WHERE email LIKE '$InputEmail1' AND password LIKE '$InputPassword1';")->fetch_all(MYSQLI_ASSOC);
+        $a=$database_connection->query("SELECT * FROM users WHERE email LIKE '$InputEmail1' AND password LIKE '$InputPassword1' AND is_active = 1 AND is_banned = 0 AND is_archived = 0;")->fetch_all(MYSQLI_ASSOC);
         $database_connection->close();
         if(Count($a)!=0)
         {
