@@ -70,7 +70,7 @@
                 <div class="col-md-4 mb-5">
                     <div class="card h-100">
                         <div class="card-body">
-                            <h2 class="card-title">PitBull</h2>
+                            <h2 class="card-title">USERNAME</h2>
                             <p class="card-text">Film opowiada o policjantach z wydziału zabójstw, którzy prowadzą śledztwo w sprawie fali morderstw wsród Ormian. Oprócz kłopotów ze śledztwem muszą walczyć z nałogami, biurokracją, wykorzystanym rocznym limitem pocisków i benzyny oraz niskimi dochodami.</p>
                         </div>
                         <div class="nav-link" href="#!"><img class="mx-auto d-block col-md-11 mb-5" src="https://2.allegroimg.com/s1024/0c8dfc/e1ecbf9745b5a9f6b25d6a6a4722.png" alt="..." /></a></div>
