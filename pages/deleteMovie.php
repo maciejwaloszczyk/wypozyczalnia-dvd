@@ -15,5 +15,20 @@
         header("Location: /wypozyczalnia-dvd/index.php");
     }
     ?>
+    <form action="" method="POST">
+        <input type="number" name="id" id="id"><br>
+        <input type="submit" name="Delete" value="Delete"><br>
+        <input type="text" name="name" id="name" placeholder="Nazwa filmu">
+        <input type="number" name="year" id="year" min="1900" max="10000" step="1" placeholder="Year of release">
+        <input type="text" name="director" id="director" placeholder="Director">
+    </form>
+    <?php
+    if(isset($_POST["Delete"]))
+    {
+        $conn=new mysqli('localhost:3306', USER, PASSWD, DBNAME);
+        $conn->query("DELETE FROM videos WHERE id={$_POST["id"]}");//vulnerable to sql injection
+        $conn->close();
+    }
+    ?>
 </body>
 </html>
