@@ -16,8 +16,8 @@ session_start();
     ?>
     <h2>Opcje</h2>
     <ul>
-        <li><a>Lista Filmów</a></li>
-        <li><a>Lista Użytkowników</a></li>
+        <li><a href="movieList.php">Lista Filmów</a></li>
+        <li><a href="userList.php">Lista Użytkowników</a></li>
         <li><a href="addMovie.php">Dodaj Film</a></li>
         <li><a href="deleteMovie.php">Usuń Konkretny Film</a></li>
         <li><a href="">Zmien Konkretny Film</a></li>
