@@ -16,6 +16,8 @@
         else
         {
             $result = $database_connection -> query("INSERT INTO users VALUES (NULL,'$InputLogin1', '$InputPassword1', '$InputEmail1', '$privileges', 0, 0)");
+            session_start();
+            $_SESSION["user"]=$database_connection->insert_id;
             $database_connection->close();
             header("Location: /wypozyczalnia-dvd/index.php");
         }
