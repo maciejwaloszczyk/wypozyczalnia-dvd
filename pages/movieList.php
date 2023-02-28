@@ -1,3 +1,4 @@
+<?php include '../php/creds.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +14,38 @@ session_start();
     {
         header("Location: /wypozyczalnia-dvd/index.php");
     }
+    $conn=new mysqli('localhost:3306', USER, PASSWD, DBNAME);
+    $res=$conn->query("SELECT * FROM videos")->fetch_all(MYSQLI_ASSOC);
+    $conn->close();
     ?>
     <p><a href="adminBoard.php">Wróć do panelu administratora</a></p>
+    <table>
+        <tbody>
+        <tr>
+                <td>id</td>
+                <td>title</td>
+                <td>genre</td>
+                <td>release year</td>
+                <td>director</td>
+                <td>Photo directory</td>
+                <td>description</td>
+                <td>date added</td>
+            </tr>
+            <?php
+            foreach($res as $part){
+            ?>
+            <tr>
+                <td><?=$part["id"]?></td>
+                <td><?=$part["title"]?></td>
+                <td><?=$part["genre"]?></td>
+                <td><?=$part["releaseYear"]?></td>
+                <td><?=$part["director"]?></td>
+                <td><?=$part["photoDirectiory"]?></td>
+                <td><?=$part["description"]?></td>
+                <td><?=$part["dateAdded"]?></td>
+            </tr>
+            <?php } ?>
+        </tbody>
+    </table>
 </body>
 </html>
