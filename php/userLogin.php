@@ -19,7 +19,7 @@
             header("Location: $bref");
         }
         //ZMIENIĆ PONIŻEJ PO PRZENIESIENIU
-        else header("Location: /wypozyczalnia-dvd/login.php?userLoginError=true&bref=$bref");
+        else header("Location: /wypozyczalnia-dvd/pages/login.php?userLoginError=true&bref=$bref");
     ?>
 </body>
 </html>

@@ -18,7 +18,7 @@
         <!-- Page Content-->
         <div class="d-flex">
             <div class="container px-4 py-4 px-lg-10 d-flex align-content-md-center">
-                <form action="php/userLogin.php" method="POST">
+                <form action="../php/userLogin.php" method="POST">
                     <div class="mb-3">
                         <label for="InputEmail1" class="form-label">Adres e-mail</label>
                         <input type="email" class="form-control" id="InputEmail1" name="InputEmail1" aria-describedby="emailHelp">
