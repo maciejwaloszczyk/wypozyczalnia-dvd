@@ -20,7 +20,7 @@ session_start();
         <li><a href="userList.php">Lista Użytkowników</a></li>
         <li><a href="addMovie.php">Dodaj Film</a></li>
         <li><a href="deleteMovie.php">Usuń Konkretny Film</a></li>
-        <li><a href="">Zmien Konkretny Film</a></li>
+        <li><a href="editMovie.php">Zmien Konkretny Film</a></li>
         <li><a href="">Użytkownicy z Zaległościami</a></li>
     </ul>
 </body>
