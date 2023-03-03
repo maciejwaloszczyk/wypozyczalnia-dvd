@@ -14,10 +14,15 @@
         $database_connection->close();
         if(Count($a)!=0)
         {
+            if($a[0]["is_banned"]==true)
+            {
+                header("Location: /wypozyczalnia-dvd/pages/login.php?userLoginBanned=true&bref=$bref");
+            }
+            else{
             session_start();
             $_SESSION["user"]=$a[0]["id"];
             $_SESSION["privileges"]=$a[0]["privileges"];
-            header("Location: $bref");
+            header("Location: $bref");}
         }
         //ZMIENIĆ PONIŻEJ PO PRZENIESIENIU
         else header("Location: /wypozyczalnia-dvd/pages/login.php?userLoginError=true&bref=$bref");

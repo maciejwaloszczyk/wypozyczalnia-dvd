@@ -28,7 +28,8 @@
                         <label for="InputPassword1" class="form-label">Hasło</label>
                         <input type="password" class="form-control" id="InputPassword1" name="InputPassword1">
                     </div>
-                    <?php if (isset($_GET['userLoginError'])) echo '<div class="mb-3"><div id="userLoginError" class="form-text text-danger">Błędna nazwa użytkownika lub hasło</div></div>'; ?>
+                    <?php if (isset($_GET['userLoginError'])) echo '<div class="mb-3"><div id="userLoginError" class="form-text text-danger">Błędna nazwa użytkownika lub hasło</div></div>';
+                    if (isset($_GET['userLoginBanned'])) echo '<div class="mb-3"><div id="userLoginError" class="form-text text-danger">Użytkownik zbanowany</div></div>'; ?>
                     <div class="mb-3">
                         <div id="emailHelp" class="form-text"><a href="#!">Zapomniałeś hasła?</a></div>
                         <div id="emailHelp" class="form-text"><a href="#!">Nie masz jeszcze konta?</a></div>
