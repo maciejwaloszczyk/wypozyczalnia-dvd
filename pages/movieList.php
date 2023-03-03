@@ -77,6 +77,7 @@ session_start();
                 <td><?=$part["description"]?></td>
                 <td><?=$part["dateAdded"]?></td>
                 <td><a href="deleteMovie.php?id='<?=$part["id"]?>'">Delete</a></td>
+                <td><a href="editMovie.php?id='<?=$part["id"]?>'">Edit</a></td>
             </tr>
             <?php } ?>
         </tbody>
