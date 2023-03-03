@@ -17,9 +17,13 @@
         <?php include "../php/header_profile.php" ?>
         <!-- Page Content-->
         <div class="d-flex col-12">
+            <!-- PIERWSZE -->
             <div class="d-flex justify-content-start col-9 p-1 h-100 " style="height: 100%">
-                <div class="navbar bg-light col-12 h-100 d-flex flex-lg-column">
-                    <div class="col-md-5 mb-2 w-50">
+                <div class="navbar bg-light col-12 h-100 d-flex p-4">
+                    <div class="mb-2 w-50">
+                        <p class="fs-4 text-dark">Witaj!</p></br>
+                    </div>
+                    <div class="mb-2 w-50">
                         <p class="fs-4 text-dark">Profil</p>
                     </div>
                     
@@ -29,7 +33,7 @@
             <!-- DRUGIE -->
             <div class="d-flex justify-content-end col-3 p-1 h-100" style="height: 100%">
                 <div class="navbar navbar-expand-lg navbar-dark bg-info col-12 h-100 d-flex flex-lg-column">
-                    <div class="col-md-5 mb-2 w-50">
+                    <div class="col-md-5 mb-2 w-50 p-4">
                         <p class="fs-4 text-light">Aktualnie Wypożyczone</p>
                     </div>
                     <div class="col-md-5 mb-2 w-50">
