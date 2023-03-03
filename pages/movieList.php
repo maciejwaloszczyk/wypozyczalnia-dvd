@@ -43,6 +43,7 @@ session_start();
                 <td><?=$part["photoDirectiory"]?></td>
                 <td><?=$part["description"]?></td>
                 <td><?=$part["dateAdded"]?></td>
+                <td><a href="deleteMovie.php?id='<?=$part["id"]?>'">Delete</a></td>
             </tr>
             <?php } ?>
         </tbody>
