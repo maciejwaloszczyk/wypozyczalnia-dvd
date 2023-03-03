@@ -30,6 +30,13 @@
         $conn->query("DELETE FROM videos WHERE id={$_POST["id"]}");//vulnerable to sql injection
         $conn->close();
     }
+    if(isset($_GET["id"]))
+    {
+        $conn=new mysqli('localhost:3306', USER, PASSWD, DBNAME);
+        $conn->query("DELETE FROM videos WHERE id={$_GET["id"]}");//vulnerable to sql injection
+        $conn->close();
+        header("Location:/wypozyczalnia-dvd/pages/movieList.php");
+    }
     ?>
 </body>
 </html>
