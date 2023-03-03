@@ -21,7 +21,7 @@ session_start();
     <p><a href="adminBoard.php">Wróć do panelu administratora</a></p>
     <table>
         <tbody>
-        <th>
+        <tr>
                 <td>id</td>
                 <td>title</td>
                 <td>genre</td>
@@ -30,7 +30,8 @@ session_start();
                 <td>Photo directory</td>
                 <td>description</td>
                 <td>date added</td>
-            </th>
+                <td></td>
+            </tr>
             <?php
             foreach($res as $part){
             ?>
