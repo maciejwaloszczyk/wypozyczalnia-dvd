@@ -15,6 +15,13 @@
     <body>
         <!-- Responsive navbar-->
         <?php include "../php/header.php" ?>
+        <!-- Login check-->
+        <?php
+            if (isset($_SESSION["user"]))
+            {
+                header("Location: /wypozyczalnia-dvd/index.php");
+            }
+        ?>
         <!-- Page Content-->
         <div class="d-flex">
             <div class="container px-4 py-4 px-lg-10 d-flex align-content-md-center">
@@ -35,7 +42,7 @@
                     ?>
                     <div class="mb-3">
                         <div id="emailHelp" class="form-text"><a href="#!">Zapomniałeś hasła?</a></div>
-                        <div id="emailHelp" class="form-text"><a href="#!">Nie masz jeszcze konta?</a></div>
+                        <div id="emailHelp" class="form-text"><a href="/wypozyczalnia-dvd/pages/register.php?bref=<?php echo $_GET['bref']; ?>">Nie masz jeszcze konta?</a></div>
                     </div>
                     <input type="hidden" id="bref" name="bref" value="<?php echo $_GET['bref'];?>">
                     <button type="submit" class="btn btn-theme">Zaloguj się</button>
