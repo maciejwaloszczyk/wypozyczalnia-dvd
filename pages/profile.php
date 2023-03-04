@@ -52,15 +52,14 @@
                             <div class="p-3 py-5">
                                 <div class="d-flex justify-content-between align-items-center mb-3">
                                     <h4 class="text-right">Twoja Historia Wypożyczeń</h4>
-                                </div>  
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="d-flex justify-content-start h-50 w-100">
                         <div class="row">
-                            <div class="card h-100 col">
-                                <div class="card-body">        
-                                </div>
+                            <div class="card h-75 col">
+                                <br>
                                 <div class="card-subtitle" href="#!"><img class="mx-auto d-block col-md-8 mb-3" src="https://2.allegroimg.com/s1024/0c8dfc/e1ecbf9745b5a9f6b25d6a6a4722.png" alt="..." /></a>
                                     <h2 class="d-flex card-footer justify-content-center">TITLE</h2>
                                 </div>  
