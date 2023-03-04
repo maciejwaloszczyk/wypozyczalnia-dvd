@@ -11,7 +11,7 @@
                         <li class="nav-item"><a class="nav-link" href="/wypozyczalnia-dvd/pages/about.php">O nas</a></li>
                         <?php if(isset($_SESSION["user"]))
                         {
-                            ?><li class="nav-item"><a class="nav-link" href="#!">Profil</a></li>
+                            ?><li class="nav-item"><a class="nav-link" href="/wypozyczalnia-dvd/pages/profile.php">Profil</a></li>
                             <li class="nav-item"><a class="nav-link" href="/wypozyczalnia-dvd/php/userLogout.php">⯇ Wyloguj</a></li><?php
                         } 
                         else
