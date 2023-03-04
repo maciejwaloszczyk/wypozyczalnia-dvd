@@ -35,14 +35,14 @@ session_start();
             foreach($res as $part){
             ?>
             <tr>
-                <td><?=$part["id"]?></td>
+                <td><?=$part["id_user"]?></td>
                 <td><?=$part["username"]?></td>
                 <td><?=$part["password"]?></td>
                 <td><?=$part["email"]?></td>
                 <td><?=$part["privileges"]?></td>
                 <td><?=$part["is_banned"]?></td>
                 <td><?=$part["is_archived"]?></td>
-                <td><a href="?id='<?=$part["id"]?>'">Lista zaległych filmów</a></td>
+                <td><a href="overdueMovies.php?id='<?=$part["id_user"]?>'">Lista zaległych filmów</a></td>
             </tr>
             <?php } ?>
         </tbody>
