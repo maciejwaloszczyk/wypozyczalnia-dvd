@@ -15,6 +15,13 @@
     <body>
         <!-- Responsive navbar-->
         <?php include "../php/header.php" ?>
+        <!-- Login check-->
+        <?php
+            if (isset($_SESSION["user"]))
+            {
+                header("Location: /wypozyczalnia-dvd/index.php");
+            }
+        ?>
         <!-- Page Content-->
         <div class="d-flex">
             <div class="container px-4 py-4 px-lg-10 d-flex align-content-md-center">
@@ -28,10 +35,14 @@
                         <label for="InputPassword1" class="form-label">Hasło</label>
                         <input type="password" class="form-control" id="InputPassword1" name="InputPassword1">
                     </div>
-                    <?php if (isset($_GET['userLoginError'])) echo '<div class="mb-3"><div id="userLoginError" class="form-text text-danger">Błędna nazwa użytkownika lub hasło</div></div>'; ?>
+                    <?php
+                        if (isset($_GET['userLoginError'])) echo '<div class="mb-3"><div id="userLoginError" class="form-text text-danger">Błędna nazwa użytkownika lub hasło</div></div>'; 
+                        if (isset($_GET['newUser'])) echo '<div class="mb-3"><div id="userLoginError" class="form-text text-danger">Rejestracja przebiegła pomyślnie! Potwierdź rejestrację klikając w link mailowy :)</div></div>'; 
+
+                    ?>
                     <div class="mb-3">
                         <div id="emailHelp" class="form-text"><a href="#!">Zapomniałeś hasła?</a></div>
-                        <div id="emailHelp" class="form-text"><a href="#!">Nie masz jeszcze konta?</a></div>
+                        <div id="emailHelp" class="form-text"><a href="/wypozyczalnia-dvd/pages/register.php?bref=<?php echo $_GET['bref']; ?>">Nie masz jeszcze konta?</a></div>
                     </div>
                     <input type="hidden" id="bref" name="bref" value="<?php echo $_GET['bref'];?>">
                     <button type="submit" class="btn btn-theme">Zaloguj się</button>
