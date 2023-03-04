@@ -15,6 +15,13 @@
     <body>
         <!-- Responsive navbar-->
         <?php include "../php/header.php" ?>
+        <!-- Login check-->
+        <?php
+            if (isset($_SESSION["user"]))
+            {
+                header("Location: /wypozyczalnia-dvd/index.php");
+            }
+        ?>
         <!-- Page Content-->
         <div class="d-flex">
             <div class="container px-4 py-4 px-lg-10 d-flex align-content-md-center">
@@ -55,7 +62,7 @@
                             confirm_password.onkeyup = validatePassword;
                         </script>
                     <div class="mb-3">
-                        <div id="emailHelp" class="form-text"><a href="#!">Masz już konto? Zaloguj się</a></div>
+                        <div id="emailHelp" class="form-text"><a href="/wypozyczalnia-dvd/pages/login.php?bref=<?php echo $_GET['bref']; ?>">Masz już konto? Zaloguj się</a></div>
                     </div>
                     <button type="submit" class="btn btn-theme">Zarejestruj się</button>
                 </form>
