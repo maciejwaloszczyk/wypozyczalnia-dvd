@@ -11302,4 +11302,6 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
+  background-image: linear-gradient(red, yellow);
+  
 }
