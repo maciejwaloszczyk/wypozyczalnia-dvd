@@ -1,4 +1,3 @@
-<?php session_start(); ?>
 <nav class="navbar navbar-expand-lg navbar-dark bg-info">
             <div class="container px-5">
                 <a class="navbar-brand" href="#!">Wypożyczalnia DVD</a>
@@ -9,16 +8,6 @@
                         <li class="nav-item"><a class="nav-link" href="#!">Najnowsze</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">Kontakt</a></li>
                         <li class="nav-item"><a class="nav-link" href="/wypozyczalnia-dvd/pages/about.php">O nas</a></li>
-                        <?php if(isset($_SESSION["user"]))
-                        {
-                            ?><li class="nav-item"><a class="nav-link" href="#!">Profil</a></li><?php
-                        } 
-                        else
-                        {
-                            ?><li class="nav-item"><a class="nav-link" href="/wypozyczalnia-dvd/pages/login.php?bref=<?= $_SERVER['PHP_SELF'] ?>">Zaloguj</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/wypozyczalnia-dvd/pages/register.php?bref=<?= $_SERVER['PHP_SELF'] ?>">Zarejestruj</a></li><?php
-                        }
-                        ?>
                         
                     </ul>
                 </div>
