@@ -8,7 +8,7 @@
     <meta name="author" content="" />
     <title>Wypożyczalnia DVD</title>
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.png" />
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.png" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="../css/styles.css" rel="stylesheet" />
     <link href="../css/styles_2.css" rel="stylesheet" />
@@ -33,7 +33,7 @@ session_start();
     ?>
 
     <!-- Responsive navbar-->
-    <?php include "../php/header_profile.php" ?>
+    <?php include "../php/header.php" ?>
     <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
         <div class="container px-5">
             <a class="navbar-brand" href="adminBoard.php">Panel Administratora</a>

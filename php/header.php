@@ -1,4 +1,6 @@
 <?php session_start(); ?>
+<link href="../css/styles.css" rel="stylesheet" />
+<link href="../css/styles_2.css" rel="stylesheet" />
 <nav class="navbar navbar-expand-lg navbar-dark bg-info">
             <div class="container px-5">
                 <a class="navbar-brand" href="#!">Wypożyczalnia DVD</a>
@@ -12,6 +14,10 @@
                         <?php if(isset($_SESSION["user"]))
                         {
                             ?><li class="nav-item"><a class="nav-link" href="#!">Profil</a></li><?php
+                            if($_SESSION["privileges"]=="ADMIN")
+                            {
+                                ?><li><a href="/wypozyczalnia-dvd/pages/adminBoard.php" class="btn btn-danger" role="button">Panel administratora</a></li><?php
+                            }
                         } 
                         else
                         {

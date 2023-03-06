@@ -29,7 +29,7 @@
     }
     ?>
     <!-- Responsive navbar-->
-    <?php include "../php/header_profile.php" ?>
+    <?php include "../php/header.php" ?>
     <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
         <div class="container px-5">
             <a class="navbar-brand" href="adminBoard.php">Panel Administratora</a>
