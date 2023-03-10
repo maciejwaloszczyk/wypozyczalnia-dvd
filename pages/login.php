@@ -37,11 +37,12 @@
                     </div>
                     <?php
                         if (isset($_GET['userLoginError'])) echo '<div class="mb-3"><div id="userLoginError" class="form-text text-danger">Błędna nazwa użytkownika lub hasło</div></div>'; 
-                        if (isset($_GET['newUser'])) echo '<div class="mb-3"><div id="userLoginError" class="form-text text-danger">Rejestracja przebiegła pomyślnie! Potwierdź rejestrację klikając w link mailowy :)</div></div>'; 
-
+                        if (isset($_GET['newUser'])) echo '<div class="mb-3"><div id="userLoginError" class="form-text text-danger">Rejestracja przebiegła pomyślnie! Potwierdź rejestrację klikając w link mailowy :)</div></div>';
+                        if (isset($_GET['bannedUser'])) echo '<div class="mb-3"><div id="userLoginError" class="form-text text-danger">Na użytkownika nałożony jest ban!</div></div>';
+                        if (isset($_GET['remindMe'])) echo '<div class="mb-3"><div id="userLoginError" class="form-text text-danger">Przypomnij hasło używając e-maila, a następnie zaloguj się tutaj.</div></div>';
                     ?>
                     <div class="mb-3">
-                        <div id="emailHelp" class="form-text"><a href="#!">Zapomniałeś hasła?</a></div>
+                        <div id="emailHelp" class="form-text"><a href="/wypozyczalnia-dvd/pages/remindMe.php">Zapomniałeś hasła?</a></div>
                         <div id="emailHelp" class="form-text"><a href="/wypozyczalnia-dvd/pages/register.php?bref=<?php echo $_GET['bref']; ?>">Nie masz jeszcze konta?</a></div>
                     </div>
                     <input type="hidden" id="bref" name="bref" value="<?php echo $_GET['bref'];?>">
