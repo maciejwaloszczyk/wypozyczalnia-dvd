@@ -93,7 +93,7 @@
             </div>
         </div>
         <!-- Footer-->
-        <footer class="py-5 bg-dark">
+        <footer class="py-5 bg-dark navbar fixed-bottom">
             <div class="container px-4 px-lg-5"><p class="m-0 text-center text-white">KNS Web Services &copy; Wypożyczalnia DVD 2023</p></div>
         </footer>
         <!-- Bootstrap core JS-->
