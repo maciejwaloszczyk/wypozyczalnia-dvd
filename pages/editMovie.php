@@ -20,7 +20,7 @@
     {
         header("Location: /wypozyczalnia-dvd/index.php");
     }
-    $res=["id"=>0,"title"=>"","genre"=>"scfi","releaseYear"=>0,"director"=>"","description"=>"","photoDirectiory"=>""];
+    $res=["id"=>0,"title"=>"","genre"=>"scfi","releaseYear"=>0,"director"=>"","description"=>"","photoDirectory"=>""];
     if(isset($_GET["id"]))
     {
         $conn=new mysqli('localhost:3306', USER, PASSWD, DBNAME);
@@ -84,14 +84,14 @@
                                     <td><input type="number" name="year" id="year" min="1900" max="10000" step="1" placeholder="Year of release" value="<?=substr($res["releaseYear"],0,4)?>"></td>
                                     <td><input type="text" name="director" id="director" placeholder="Director" value="<?=$res["director"]?>"></td>
                                     <td><textarea name="desc" id="desc" cols="30" rows="10"><?=$res["description"]?></textarea></td>
-                                    <td><input type="text" name="photodir" id="photodir" placeholder="Photo directory" value="<?=$res["photoDirectiory"]?>"></td>
+                                    <td><input type="text" name="photodir" id="photodir" placeholder="Photo directory" value="<?=$res["photoDirectory"]?>"></td>
                                     <td><input type="submit" value="Zmień" class="btn btn-primary" name="Zmień"></td>
                                 </form>
                                 <?php 
                                 if(isset($_POST["Zmień"]))
                                 {
                                     $conn=new mysqli('localhost:3306', USER, PASSWD, DBNAME);
-                                    $conn->query("UPDATE videos SET title='{$_POST["name"]}',genre='{$_POST["genre"]}', releaseYear='{$_POST["year"]}-1-1', director='{$_POST["director"]}', description='{$_POST["desc"]}', photoDirectiory='{$_POST["photodir"]}' WHERE id={$_POST["id"]};");
+                                    $conn->query("UPDATE videos SET title='{$_POST["name"]}',genre='{$_POST["genre"]}', releaseYear='{$_POST["year"]}-1-1', director='{$_POST["director"]}', description='{$_POST["desc"]}', photoDirectory='{$_POST["photodir"]}' WHERE id={$_POST["id"]};");
                                     $conn->close();
                                     header("Location: editMovie.php?id={$_POST["id"]}");
                                 }

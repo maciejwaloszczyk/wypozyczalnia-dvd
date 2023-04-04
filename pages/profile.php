@@ -145,33 +145,32 @@
                     <div class="col-md-5 mb-2 w-50 p-4">
                         <p class="fs-4 text-light">Aktualnie Wypożyczone</p>
                     </div>
-                    <div class="col-md-5 mb-2 w-50">
-                            <div class="card h-100">
-                                <div class="card-body">        
+                    <!-- skrypt PHP -->
+                    <?php
+                    $resultVideos = $database_connection -> query("SELECT videos.* FROM videos, rental_data WHERE videos.id = rental_data.id_film AND rental_data.id_user = $idUser");
+                    function resultToArray($result) {
+                        $rows = array();
+                        while($row = $result->fetch_assoc()) {
+                            $rows[] = $row;
+                        }
+                        return $rows;
+                    }                    
+                    $readVideos = resultToArray($resultVideos);
+                    foreach ($readVideos as $index=>$value)
+                    {
+                        $title = $readVideos[$index]['title'];
+                        $photoDirectory = $readVideos[$index]['photoDirectory'];
+                        echo "
+                        <div class='col-md-5 mb-2 w-50'>
+                                <div class='card h-100'>
+                                    <div class='card-body'>        
+                                    </div>
+                                    <div class='card-subtitle' href='#!'><img class='mx-auto d-block col-md-8 mb-3' src='$photoDirectory' alt='...' /></a>
+                                        <h2 class='d-flex card-footer justify-content-center'>$title</h2>
+                                    </div>  
                                 </div>
-                                <div class="card-subtitle" href="#!"><img class="mx-auto d-block col-md-8 mb-3" src="https://2.allegroimg.com/s1024/0c8dfc/e1ecbf9745b5a9f6b25d6a6a4722.png" alt="..." /></a>
-                                    <h2 class="d-flex card-footer justify-content-center">TITLE</h2>
-                                </div>  
-                            </div>
-                    </div>
-                    <div class="col-md-5 mb-2 w-50">
-                            <div class="card h-100">
-                                <div class="card-body">        
-                                </div>
-                                <div class="card-subtitle" href="#!"><img class="mx-auto d-block col-md-8 mb-3" src="https://2.allegroimg.com/s1024/0c8dfc/e1ecbf9745b5a9f6b25d6a6a4722.png" alt="..." /></a>
-                                    <h2 class="d-flex card-footer justify-content-center">TITLE</h2>
-                                </div>  
-                            </div>
-                    </div>
-                    <div class="col-md-5 mb-2 w-50">
-                            <div class="card h-100">
-                                <div class="card-body">        
-                                </div>
-                                <div class="card-subtitle" href="#!"><img class="mx-auto d-block col-md-8 mb-3" src="https://2.allegroimg.com/s1024/0c8dfc/e1ecbf9745b5a9f6b25d6a6a4722.png" alt="..." /></a>
-                                    <h2 class="d-flex card-footer justify-content-center">TITLE</h2>
-                                </div>  
-                            </div>
-                    </div>
+                        </div> ";
+                    }?>
 
                 </div>
             </div>

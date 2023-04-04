@@ -119,7 +119,7 @@ session_start();
                                     <td><?=$part["genre"]?></td>
                                     <td><?=$part["releaseYear"]?></td>
                                     <td><?=$part["director"]?></td>
-                                    <td><img class="mx-auto d-block col-md-11 mb-5" src="<?php echo $part["photoDirectiory"];?>" alt="..." /></a></td>
+                                    <td><img class="mx-auto d-block col-md-11 mb-5" src="<?php echo $part["photoDirectory"];?>" alt="..." /></a></td>
                                     <td><textarea readonly rows="1" placeholder="opis" required><?=$part["description"]?></textarea></td>
                                     <td><?=$part["dateAdded"]?></td>
                                     <td><a href="editMovie.php?id='<?=$part["id"]?>'" class="btn btn-primary" role="button">Edit</a></td>

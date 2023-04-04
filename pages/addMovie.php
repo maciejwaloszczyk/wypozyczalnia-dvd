@@ -43,7 +43,7 @@
     {
         $cdate=date("Y-m-d");
         $conn=new mysqli('localhost:3306', USER, PASSWD, DBNAME);
-        $conn->query("INSERT INTO `videos` (`id`, `title`, `genre`, `releaseYear`, `director`, `photoDirectiory`, `description`, `dateAdded`) VALUES (NULL, '{$_POST["name"]}', '{$_POST["genre"]}', '{$_POST["year"]}-1-1', '{$_POST["director"]}', '{$_POST["photodir"]}', '{$_POST["desc"]}', '$cdate') ");
+        $conn->query("INSERT INTO `videos` (`id`, `title`, `genre`, `releaseYear`, `director`, `photoDirectory`, `description`, `dateAdded`) VALUES (NULL, '{$_POST["name"]}', '{$_POST["genre"]}', '{$_POST["year"]}-1-1', '{$_POST["director"]}', '{$_POST["photodir"]}', '{$_POST["desc"]}', '$cdate') ");
         $conn->close();
     }
     ?>
