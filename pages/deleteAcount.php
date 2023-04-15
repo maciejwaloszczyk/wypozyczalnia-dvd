@@ -67,6 +67,9 @@ if (isset($_POST['Dalej']))
                         <label for="InputEmail1" class="form-label">Usuwanie konta</label>
                         <div id="emailHelp" class="form-text">Podaj hasło</div>
                         <input type="password" class="form-control" id="InputEmail1" name="InputEmail1" aria-describedby="emailHelp" required>
+                        <?php 
+                            if (isset($_GET['userLoginError'])) echo '<div class="mb-3"><div id="userLoginError" class="form-text text-danger">Błędne hasło</div></div>';      
+                        ?>
                         <div id="emailHelp" class="form-text text-danger">UWAGA! Usunięcie konta jest operacją bezpowrotną!</div>
                     </div>
                     <input type="submit" name="Dalej" class="btn btn-danger" value="USUŃ">
