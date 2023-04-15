@@ -27,7 +27,7 @@ $conn->close();
 <p><?=$res["releaseYear"]?></p>
 <p><?=$res["director"]?></p>
 <p><?=$res["genre"]?></p><br>
-<img src="<?=$res["photoDirectiory"]?>" alt="">
+<img src="<?=$res["photoDirectory"]?>" alt="">
 <p><?=$res["description"]?></p>
 </body>
 <script>

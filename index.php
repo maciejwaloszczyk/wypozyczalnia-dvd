@@ -12,6 +12,7 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
         <link href="css/styles_2.css" rel="stylesheet" />
+
     </head>
     <body>
         <!-- Responsive navbar-->
@@ -57,12 +58,9 @@
                 <div class="card-body">
                     <div class="input-group">
                         <div class="form-outline">
-                            <input type="search" id="form1" class="form-control" />
-                            <label class="form-label" for="form1">Search</label>
+                          <a class="list" href="pages/list.php">Wszystkie filmy</a>
                         </div>
-                        <button type="button" class="btn btn-primary">
-                            <i class="fas fa-search"></i>
-                        </button>
+
                     </div>
                 </div>
             </div>
@@ -74,9 +72,9 @@
         <p>Najnowsze filmy</p>
         <?php
         $conn=new mysqli('localhost:3306', USER, PASSWD, DBNAME);
-        $res=$conn->query("SELECT * FROM videos ORDER BY id DESC;")->fetch_all(MYSQLI_ASSOC);
+        $res=$conn->query("SELECT * FROM videos ORDER BY releaseYear DESC;")->fetch_all(MYSQLI_ASSOC);
         $conn->close();
-        for($i=0;$i<count($res);$i++)
+        for($i=0;$i<9;$i++)
         {
             if($i%3==0)
             {
@@ -97,7 +95,7 @@
                                 <h2 class="card-title"><?=$res[$i]["title"]?></h2>
                                 <p class="card-text"><?=$res[$i]["genre"]?></p>
                             </div>
-                            <div class="nav-link" href="#!"><img class="mx-auto d-block col-md-11 mb-5" src="<?=$res[$i]["photoDirectiory"]?>" alt="..." /></a></div>
+                            <div class="nav-link" href="#!"><img class="mx-auto d-block col-md-11 mb-5" src="<?=$res[$i]["photoDirectory"]?>" alt="..." /></a></div>
                             <div class="card-footer"><a class="btn btn-primary btn-sm" href="pages/moviePage.php?id=<?=$res[$i]["id"]?>">More Info</a>
                             <?php if(isset($_SESSION["user"])){ ?>
                                 <a class="btn btn-primary btn-sm" onclick="req(<?=$res[$i]["id"] ?>)">Wypożycz</a>
@@ -137,7 +135,7 @@
                                 <h2 class="card-title"><?=$res[$i]["title"]?></h2>
                                 <p class="card-text"><?=$res[$i]["genre"]?></p>
                             </div>
-                            <div class="nav-link" href="#!"><img class="mx-auto d-block col-md-11 mb-5" src="<?=$res[$i]["photoDirectiory"]?>" alt="..." /></a></div>
+                            <div class="nav-link" href="#!"><img class="mx-auto d-block col-md-11 mb-5" src="<?=$res[$i]["photoDirectory"]?>" alt="..." /></a></div>
                             <div class="card-footer"><a class="btn btn-primary btn-sm" href="pages/moviePage.php?id=<?=$res[$i]["id"]?>">More Info</a>
                             <?php if(isset($_SESSION["user"])){ ?>
                                 <a class="btn btn-primary btn-sm" onclick="req(<?=$res[$i]["id"] ?>)">Wypożycz</a>
