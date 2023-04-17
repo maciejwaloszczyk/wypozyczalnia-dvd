@@ -1,7 +1,9 @@
 <?php include "../php/creds.php" ?>
-<?php 
+<?php
+session_start();
 $conn=new mysqli('localhost:3306', USER, PASSWD, DBNAME);
 $res=$conn->query("SELECT * FROM videos WHERE id={$_GET["id"]};")->fetch_assoc();
+$isLoaned=$conn->query("SELECT * FROM rental_data WHERE id_film={$_GET["id"]} and id_user={$_SESSION["user"]}")->fetch_assoc();
 $conn->close();
 ?>
 <!DOCTYPE html>
@@ -21,7 +23,16 @@ $conn->close();
 <?php include "../php/header.php" ?>
 <h2><?=$res["title"]?></h2>
 <?php if(isset($_SESSION["user"])){ ?>
-    <a class="btn btn-primary btn-sm" onclick="req(<?=$res["id"] ?>)">Wypożycz</a>
+<?php
+    if($isLoaned == NULL)
+    {?>
+        <button class="btn btn-primary btn-sm" onclick="req(<?php echo $res['id']; ?>)">Wypożycz</button><?php
+    }
+    else
+    {?>
+        <button class="btn btn-primary btn-sm" disabled>Wypożyczone</button><?php
+    }
+?>
 <?php
     } ?>
 <p><?=$res["releaseYear"]?></p>
@@ -41,8 +52,8 @@ $conn->close();
             xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
             xhr.onreadystatechange=()=>{}
             xhr.send("id="+id);
+            window.location.reload()
         }
-        
     }
 </script>
 </html>
