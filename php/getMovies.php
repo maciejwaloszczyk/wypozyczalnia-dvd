@@ -1,4 +1,5 @@
 <?php
+  include "../php/creds.php";
   $db = new mysqli('localhost:3306', USER, PASSWD, DBNAME);
   if ($db->connect_error) {
     die("Connection failed: " . $db->connect_error);
