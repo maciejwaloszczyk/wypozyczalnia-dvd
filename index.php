@@ -97,8 +97,10 @@
                                 <p class="card-text"><?=$res[$i]["genre"]?></p>
                             </div>
                             <?php
+                            if(isset($_SESSION["user"])){
                                 $conn=new mysqli('localhost:3306', USER, PASSWD, DBNAME);
                                 $isLoaned=$conn->query("SELECT * FROM rental_data WHERE id_film={$res[$i]["id"]} and id_user={$_SESSION["user"]}")->fetch_assoc();
+                            }
                             ?>
                             <div class="nav-link" href="#!"><img class="mx-auto d-block col-md-11 mb-5" src="<?=$res[$i]["photoDirectory"]?>" alt="..." /></a></div>
                             <div class="card-footer"><a class="btn btn-primary btn-sm" href="pages/moviePage.php?id=<?=$res[$i]["id"]?>">More Info</a>

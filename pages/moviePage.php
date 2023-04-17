@@ -3,7 +3,9 @@
 session_start();
 $conn=new mysqli('localhost:3306', USER, PASSWD, DBNAME);
 $res=$conn->query("SELECT * FROM videos WHERE id={$_GET["id"]};")->fetch_assoc();
-$isLoaned=$conn->query("SELECT * FROM rental_data WHERE id_film={$_GET["id"]} and id_user={$_SESSION["user"]}")->fetch_assoc();
+if(isset($_SESSION["user"])){
+    $isLoaned=$conn->query("SELECT * FROM rental_data WHERE id_film={$_GET["id"]} and id_user={$_SESSION["user"]}")->fetch_assoc();
+}
 $conn->close();
 ?>
 <!DOCTYPE html>
