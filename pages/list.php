@@ -42,7 +42,7 @@
   <select name="genre" id="genre">
     <option value="">Wszystkie gatunki</option>
     <?php
-      $db = new mysqli('localhost:3306', 'USER', 'PASSWD', 'DBNAME');
+      $db = new mysqli('localhost:3306', USER, PASSWD, DBNAME);
       if ($db->connect_error) {
         die("Connection failed: " . $db->connect_error);
       }
