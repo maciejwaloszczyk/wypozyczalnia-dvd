@@ -1,4 +1,4 @@
-<?php include "php/creds.php"; ?>
+<?php include "../php/creds.php"; ?>
 <!DOCTYPE html>
 <html>
 <head>
