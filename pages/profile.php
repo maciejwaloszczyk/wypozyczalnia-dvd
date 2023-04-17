@@ -82,7 +82,7 @@
                             <div class="p-3 py-5">
                                 </br></br></br>
                                 <div class="d-flex justify-content-between align-items-center experience"><span>Resetuj Hasło:</span><form action="/wypozyczalnia-dvd/pages/remindMe.php"><button type="submit" class="btn btn-outline-danger">Resetuj</button></form></div><br>
-                                <div class="d-flex justify-content-between align-items-center experience"><span>Usuń Profil:</span><button class="btn btn-danger profile-button" type="button">Usuń</button></div><br>
+                                <div class="d-flex justify-content-between align-items-center experience"><span>Usuń Profil:</span><form action="/wypozyczalnia-dvd/pages/deleteAccount.php"><button class="btn btn-danger profile-button" type="submit">Usuń</button></form></div><br>
                             </div>
                         </div>
                     </div>
