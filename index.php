@@ -1,3 +1,4 @@
+<?php include "php/creds.php"; ?>
 <!DOCTYPE html>
 <html lang="pl">
     <head>
@@ -11,6 +12,7 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
         <link href="css/styles_2.css" rel="stylesheet" />
+
     </head>
     <body>
         <!-- Responsive navbar-->
@@ -56,46 +58,107 @@
                 <div class="card-body">
                     <div class="input-group">
                         <div class="form-outline">
-                            <input type="search" id="form1" class="form-control" />
-                            <label class="form-label" for="form1">Search</label>
+                          <a class="list" href="pages/list.php">Wszystkie filmy</a>
                         </div>
-                        <button type="button" class="btn btn-primary">
-                            <i class="fas fa-search"></i>
-                        </button>
+
                     </div>
                 </div>
             </div>
             <!-- Content Row-->
-            <div class="row gx-4 gx-lg-5">
-                <div class="col-md-4 mb-5">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h2 class="card-title">PitBull</h2>
-                            <p class="card-text">Film opowiada o policjantach z wydziału zabójstw, którzy prowadzą śledztwo w sprawie fali morderstw wsród Ormian. Oprócz kłopotów ze śledztwem muszą walczyć z nałogami, biurokracją, wykorzystanym rocznym limitem pocisków i benzyny oraz niskimi dochodami.</p>
-                        </div>
-                        <div class="nav-link" href="#!"><img class="mx-auto d-block col-md-11 mb-5" src="https://2.allegroimg.com/s1024/0c8dfc/e1ecbf9745b5a9f6b25d6a6a4722.png" alt="..." /></a></div>
+
+
+        
+
+        <p>Najnowsze filmy</p>
+        <?php
+        $conn=new mysqli('localhost:3306', USER, PASSWD, DBNAME);
+        $res=$conn->query("SELECT * FROM videos ORDER BY releaseYear DESC;")->fetch_all(MYSQLI_ASSOC);
+        $conn->close();
+        for($i=0;$i<9;$i++)
+        {
+            if($i%3==0)
+            {
+                if($i!=0)
+                {
+                    ?>
                     </div>
-                </div>
-                <div class="col-md-4 mb-5">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h2 class="card-title">Card Two</h2>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod tenetur ex natus at dolorem enim! Nesciunt pariatur voluptatem sunt quam eaque, vel, non in id dolore voluptates quos eligendi labore.</p>
+                    <?php
+                }
+                ?>
+                <div class="row gx-4 gx-lg-5">
+                <?php
+            }
+            ?>
+                    <div class="col-md-4 mb-5">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h2 class="card-title"><?=$res[$i]["title"]?></h2>
+                                <p class="card-text"><?=$res[$i]["genre"]?></p>
+                            </div>
+                            <div class="nav-link" href="#!"><img class="mx-auto d-block col-md-11 mb-5" src="<?=$res[$i]["photoDirectory"]?>" alt="..." /></a></div>
+                            <div class="card-footer"><a class="btn btn-primary btn-sm" href="pages/moviePage.php?id=<?=$res[$i]["id"]?>">More Info</a>
+                            <?php if(isset($_SESSION["user"])){ ?>
+                                <a class="btn btn-primary btn-sm" onclick="req(<?=$res[$i]["id"] ?>)">Wypożycz</a>
+                            <?php
+                            }
+                            ?>
                         </div>
-                        <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-5">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h2 class="card-title">Card Three</h2>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
                         </div>
-                        <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
                     </div>
-                </div>
+            <?php
+        }
+        ?>
+
+    <p>Najpopularniejsze filmy</p>
+        <?php
+        $conn=new mysqli('localhost:3306', USER, PASSWD, DBNAME);
+        $res=$conn->query("SELECT videos.*,COUNT(videos.id) as num FROM rental_data JOIN videos ON videos.id=id_film GROUP BY id_film ORDER BY num DESC;")->fetch_all(MYSQLI_ASSOC);
+        $conn->close();
+        for($i=0;$i<count($res);$i++)
+        {
+            if($i%3==0)
+            {
+                if($i!=0)
+                {
+                    ?>
+                    </div>
+                    <?php
+                }
+                ?>
+                <div class="row gx-4 gx-lg-5">
+                <?php
+            }
+            ?>
+                    <div class="col-md-4 mb-5">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h2 class="card-title"><?=$res[$i]["title"]?></h2>
+                                <p class="card-text"><?=$res[$i]["genre"]?></p>
+                            </div>
+                            <div class="nav-link" href="#!"><img class="mx-auto d-block col-md-11 mb-5" src="<?=$res[$i]["photoDirectory"]?>" alt="..." /></a></div>
+                            <div class="card-footer"><a class="btn btn-primary btn-sm" href="pages/moviePage.php?id=<?=$res[$i]["id"]?>">More Info</a>
+                            <?php if(isset($_SESSION["user"])){ ?>
+                                <a class="btn btn-primary btn-sm" onclick="req(<?=$res[$i]["id"] ?>)">Wypożycz</a>
+                            <?php
+                            }
+                            ?>
+                        </div>
+                        </div>
+                    </div>
+            <?php
+        }//błąd domknięcia div
+        ?>
+
+
+            
+
             </div>
+
         </div>
+
+
+
+
         <!-- Footer-->
         <footer class="py-5 bg-dark">
             <div class="container px-4 px-lg-5"><p class="m-0 text-center text-white">KNS Web Services &copy; Wypożyczalnia DVD 2023</p></div>
@@ -105,4 +168,19 @@
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
     </body>
+    <script>
+    function req(id)
+    {
+        if(confirm("Czy na pewno chcesz wypożyczyć ten film?"))
+        {
+            const xhr=new XMLHttpRequest();
+            xhr.open("POST","php/borrow.php",true);
+
+            xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+            xhr.onreadystatechange=()=>{}
+            xhr.send("id="+id);
+        }
+        
+    }
+</script>
 </html>

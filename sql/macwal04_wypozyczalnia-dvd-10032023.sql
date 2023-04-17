@@ -81,7 +81,7 @@ CREATE TABLE `videos` (
   `genre` varchar(30) NOT NULL,
   `releaseYear` date NOT NULL,
   `director` varchar(60) NOT NULL,
-  `photoDirectiory` varchar(255) NOT NULL,
+  `photoDirectory` varchar(255) NOT NULL,
   `description` longtext NOT NULL,
   `dateAdded` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
@@ -90,7 +90,7 @@ CREATE TABLE `videos` (
 -- Dumping data for table `videos`
 --
 
-INSERT INTO `videos` (`id`, `title`, `genre`, `releaseYear`, `director`, `photoDirectiory`, `description`, `dateAdded`) VALUES
+INSERT INTO `videos` (`id`, `title`, `genre`, `releaseYear`, `director`, `photoDirectory`, `description`, `dateAdded`) VALUES
 (1, '123', 'scfi', '1900-01-01', '123', 'https://upload.wikimedia.org/wikipedia/commons/1/18/Venice_-_Statue_of_a_griffin.jpg', '123345', '2023-03-06'),
 (2, 'qwe', 'scfi', '1919-01-01', 'sdad', 'https://i.ytimg.com/vi/DRKg78s23Mo/maxresdefault.jpg', 'dasds', '2023-03-06'),
 (3, 'qwe', 'scfi', '1919-01-01', 'sdad', 'xzxc', 'dasds', '2023-03-06'),
