@@ -206,6 +206,7 @@
             xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
             xhr.onreadystatechange=()=>{}
             xhr.send("id="+id);
+            window.location.reload()
         }
         
     }
