@@ -11,17 +11,37 @@
                         <li class="nav-item"><a class="nav-link" href="/wypozyczalnia-dvd/pages/about.php">O nas</a></li>
                         <?php if(isset($_SESSION["user"]))
                         {
+                            $brefadd="";
+                            if(sizeof($_GET)!=0)
+                            {
+                                $brefadd="?";
+                                foreach($_GET as $get_keys => $get_vals)
+                                {
+                                    if($brefadd!="?")$brefadd.="&";
+                                    $brefadd.=$get_keys."=".$get_vals;
+                                }
+                            }
                             ?><li class="nav-item"><a class="nav-link" href="/wypozyczalnia-dvd/pages/profile.php">Profil</a></li><?php
                             if($_SESSION["privileges"]=="ADMIN")
                             {
                                 ?><li><a href="/wypozyczalnia-dvd/pages/adminBoard.php" class="btn btn-danger" role="button">Panel administratora</a></li><?php
                             }
-                            ?><li class="nav-item"><a class="nav-link" href="/wypozyczalnia-dvd/php/userLogout.php">⯇ Wyloguj</a></li><?php
+                            ?><li class="nav-item"><a class="nav-link" href="/wypozyczalnia-dvd/php/userLogout.php?bref=<?= $_SERVER['PHP_SELF'].$brefadd ?>">⯇ Wyloguj</a></li><?php
                         } 
                         else
                         {
-                            ?><li class="nav-item"><a class="nav-link" href="/wypozyczalnia-dvd/pages/login.php?bref=<?= $_SERVER['PHP_SELF'] ?>">Zaloguj</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/wypozyczalnia-dvd/pages/register.php?bref=<?= $_SERVER['PHP_SELF'] ?>">Zarejestruj</a></li><?php
+                            $brefadd="";
+                            if(sizeof($_GET)!=0)
+                            {
+                                $brefadd="?";
+                                foreach($_GET as $get_keys => $get_vals)
+                                {
+                                    if($brefadd!="?")$brefadd.="&";
+                                    $brefadd.=$get_keys."=".$get_vals;
+                                }
+                            }
+                            ?><li class="nav-item"><a class="nav-link" href="/wypozyczalnia-dvd/pages/login.php?bref=<?= $_SERVER['PHP_SELF'].$brefadd ?>">Zaloguj</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/wypozyczalnia-dvd/pages/register.php?bref=<?= $_SERVER['PHP_SELF'].$brefadd ?>">Zarejestruj</a></li><?php
                         }
                         ?>
                         
