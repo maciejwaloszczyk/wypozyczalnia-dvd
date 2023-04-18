@@ -40,7 +40,7 @@ session_start();
                 <td><?=$part["genre"]?></td>
                 <td><?=$part["releaseYear"]?></td>
                 <td><?=$part["director"]?></td>
-                <td><?=$part["photoDirectiory"]?></td>
+                <td><?=$part["photoDirectory"]?></td>
                 <td><?=$part["description"]?></td>
                 <td><?=$part["dateAdded"]?></td>
             </tr>

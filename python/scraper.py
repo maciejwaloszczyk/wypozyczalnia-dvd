@@ -6,7 +6,7 @@ ia = Cinemagoer()
 top = ia.get_top250_movies()
 
 with open('movies.txt', 'w') as file:
-     file.write(f"INSERT INTO videos (title, genre, releaseYear, director, photoDirectiory, description, dateAdded, Rating) VALUES")
+     file.write(f"INSERT INTO videos (title, genre, releaseYear, director, photoDirectory, description, dateAdded, Rating) VALUES")
      for i in range(100):
         id = top[i].movieID
         movie = ia.get_movie(id)

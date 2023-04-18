@@ -70,7 +70,7 @@ CREATE TABLE `videos` (
   `genre` varchar(30) NOT NULL,
   `releaseYear` date NOT NULL,
   `director` varchar(60) NOT NULL,
-  `photoDirectiory` varchar(60) NOT NULL,
+  `photoDirectory` varchar(60) NOT NULL,
   `description` longtext NOT NULL,
   `dateAdded` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;

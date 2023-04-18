@@ -88,7 +88,7 @@ session_start();
                                 {
                                     $cdate=date("Y-m-d");
                                     $conn=new mysqli('localhost:3306', USER, PASSWD, DBNAME);
-                                    $conn->query("INSERT INTO `videos` (`id`, `title`, `genre`, `releaseYear`, `director`, `photoDirectiory`, `description`, `dateAdded`) VALUES (NULL, '{$_POST["name"]}', '{$_POST["genre"]}', '{$_POST["year"]}-1-1', '{$_POST["director"]}', '{$_POST["photodir"]}', '{$_POST["desc"]}', '$cdate') ");
+                                    $conn->query("INSERT INTO `videos` (`id`, `title`, `genre`, `releaseYear`, `director`, `photoDirectory`, `description`, `dateAdded`) VALUES (NULL, '{$_POST["name"]}', '{$_POST["genre"]}', '{$_POST["year"]}-1-1', '{$_POST["director"]}', '{$_POST["photodir"]}', '{$_POST["desc"]}', '$cdate') ");
                                     $conn->close();
                                     unset($_POST["Dodaj"]);
                                     Header('Location: '.$_SERVER['PHP_SELF']);
@@ -119,7 +119,7 @@ session_start();
                                     <td><?=$part["genre"]?></td>
                                     <td><?=$part["releaseYear"]?></td>
                                     <td><?=$part["director"]?></td>
-                                    <td><img class="mx-auto d-block col-md-11 mb-5" src="<?php echo $part["photoDirectiory"];?>" alt="..." /></a></td>
+                                    <td><img class="mx-auto d-block col-md-11 mb-5" src="<?php echo $part["photoDirectory"];?>" alt="..." /></a></td>
                                     <td><textarea readonly rows="1" placeholder="opis" required><?=$part["description"]?></textarea></td>
                                     <td><?=$part["dateAdded"]?></td>
                                     <td><a href="editMovie.php?id='<?=$part["id"]?>'" class="btn btn-primary" role="button">Edit</a></td>
