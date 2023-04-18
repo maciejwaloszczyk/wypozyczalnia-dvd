@@ -22,40 +22,70 @@ $conn->close();
     <title><?=$res["title"]?></title>
 </head>
 <body>
-<?php include "../php/header.php" ?>
-<h2><?=$res["title"]?></h2>
-<?php if(isset($_SESSION["user"])){ ?>
-<?php
-    if($isLoaned == NULL)
-    {?>
-        <button class="btn btn-primary btn-sm" onclick="req(<?php echo $res['id']; ?>)">Wypożycz</button><?php
-    }
-    else
-    {?>
-        <button class="btn btn-primary btn-sm" disabled>Wypożyczone</button><?php
-    }
-?>
-<?php
-    } ?>
-<p><?=$res["releaseYear"]?></p>
-<p><?=$res["director"]?></p>
-<p><?=$res["genre"]?></p><br>
-<img src="<?=$res["photoDirectory"]?>" alt="">
-<p><?=$res["description"]?></p>
-</body>
-<script>
-    function req(id)
-    {
-        if(confirm("Czy na pewno chcesz wypożyczyć ten film?"))
-        {
-            const xhr=new XMLHttpRequest();
-            xhr.open("POST","../php/borrow.php",true);
+    <?php include "../php/header.php" ?>
+    <div class="container px-4 px-lg-5">
+        <h1><?=$res["title"]?></h1>
+        <div class="container">
+            <div class="col">
+                <h6><?=$res["releaseYear"]?></h6>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row align-items-start">
+                <div class="container col">
+                    <div class="row">
+                        <img class="mx-auto col-md-8 mb-5" src="<?=$res["photoDirectory"]?>" alt="">
+                    </div>
+                    <div class="row my-4">
+                    <?php if(isset($_SESSION["user"])){ ?>
+                            <?php
+                                if($isLoaned == NULL)
+                                {?>
+                                    <button class="btn btn-theme btn-sm" onclick="req(<?php echo $res['id']; ?>)">Wypożycz</button><?php
+                                }
+                                else
+                                {?>
+                                    <button class="btn btn-theme btn-sm" disabled>Wypożyczone</button><?php
+                                }
+                            ?>
+                    <?php
+                        } ?> 
+                    </div>
+                </div>
+                <div class="col">
+                    <h3>Reżyser: <?=$res["director"]?></h3>
+                    <h3>Gatunek: <?=$res["genre"]?></h3>
+                    <p><?=$res["description"]?></p>
+                </div>
+            </div>
+        </div>
 
-            xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-            xhr.onreadystatechange=()=>{}
-            xhr.send("id="+id);
-            window.location.reload()
+    </div>
+    <!-- Footer-->
+    <footer class="py-5 bg-dark ">
+    <div class="container px-4 px-lg-5"><p class="m-0 text-center text-white">KNS Web Services &copy; Wypożyczalnia DVD 2023</p></div>
+    </footer>
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+</body>
+
+
+
+    <script>
+        function req(id)
+        {
+            if(confirm("Czy na pewno chcesz wypożyczyć ten film?"))
+            {
+                const xhr=new XMLHttpRequest();
+                xhr.open("POST","../php/borrow.php",true);
+
+                xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+                xhr.onreadystatechange=()=>{}
+                xhr.send("id="+id);
+            }
         }
-    }
-</script>
+    </script>
 </html>
