@@ -43,7 +43,7 @@
       echo "<p class='card-text'> " . $row['genre'] . "</p>";
       echo "</div>";
       echo "<div class='nav-link' href='#!'><img class='mx-auto d-block col-md-11 mb-5' src='" . $row['photoDirectory'] . "'/></a></div>";
-      echo "<div class='card-footer'><a class='btn btn-primary btn-sm' href='../pages/moviePage.php?id=". $row['id'] . "'>More info</a></div>";
+      echo "<div class='card-footer text-center'><a class='btn btn-light' href='../pages/moviePage.php?id=". $row['id'] . "'>Więcej informacji</a></div>";
       echo "</div>";
       echo "</div>";
       if ($i % 3 == 0 && $i != $result->num_rows) {
