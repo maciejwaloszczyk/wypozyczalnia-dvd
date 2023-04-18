@@ -10,8 +10,8 @@
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.png" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
-        <link href="css/styles_2.css" rel="stylesheet" />
+        <link href="../css/styles.css" rel="stylesheet" />
+        <link href="../css/styles_2.css" rel="stylesheet" />
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
     $(document).ready(function() {
@@ -38,55 +38,75 @@
   </script>
 </head>
 <body>
-  <label for="genre">Wybierz gatunek:</label>
-  <select name="genre" id="genre">
-    <option value="">Wszystkie gatunki</option>
-    <?php
-      $db = new mysqli('localhost:3306', USER, PASSWD, DBNAME);
-      if ($db->connect_error) {
-        die("Connection failed: " . $db->connect_error);
-      }
-      $sql = "SELECT DISTINCT genre FROM videos";
-      $result = $db->query($sql);
-      while ($row = $result->fetch_assoc()) {
-        echo "<option value='".$row['genre']."'>".$row['genre']."</option>";
-      }
-    ?>
-  </select>
-  <label for="director">Wybierz reżysera:</label>
-  <select name="director" id="director">
-    <option value="">Wszyscy reżyserzy</option>
-    <?php
-      $sql = "SELECT DISTINCT director FROM videos";
-      $result = $db->query($sql);
-      while ($row = $result->fetch_assoc()) {
-        echo "<option value='".$row['director']."'>".$row['director']."</option>";
-      }
-    ?>
-  </select>
-  <label for="releaseYear">Wybierz rok premiery:</label>
-  <select name="releaseYear" id="releaseYear">
-    <option value="">---</option>
-    <?php
-      $sql = "SELECT DISTINCT releaseYear FROM videos";
-      $result = $db->query($sql);
-      while ($row = $result->fetch_assoc()) {
-        echo "<option value='".$row['releaseYear']."'>".$row['releaseYear']."</option>";
-      }
-    ?>
-  </select>
+  <!-- Responsive navbar-->
+  <?php include "../php/header.php" ?>
+        <!-- Page Content-->
+  <div class="container px-4 px-lg-5">
+    <div><h1>Wszystkie filmy</h1></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-2">      
+      <label for="genre">Wybierz gatunek:</label>
+      <select class="form-select" name="genre" id="genre">
+        <option value="">Wszystkie gatunki</option>
+        <?php
+          $db = new mysqli('localhost:3306', USER, PASSWD, DBNAME);
+          if ($db->connect_error) {
+            die("Connection failed: " . $db->connect_error);
+          }
+          $sql = "SELECT DISTINCT genre FROM videos";
+          $result = $db->query($sql);
+          while ($row = $result->fetch_assoc()) {
+            echo "<option value='".$row['genre']."'>".$row['genre']."</option>";
+          }
+        ?>
+      </select>
+    </div>
+    </div>
+    <div class="row">
+          <div class="col-lg-1">
+            <label for="director">Wybierz reżysera:</label>
+            <select class="form-select" name="director" id="director">
+              <option value="">Wszyscy reżyserzy</option>
+              <?php
+              $sql = "SELECT DISTINCT director FROM videos";
+              $result = $db->query($sql);
+              while ($row = $result->fetch_assoc()) {
+              echo "<option value='".$row['director']."'>".$row['director']."</option>";
+              }
+              ?>
+            </select>
+          </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-2">      
+        <label for="releaseYear">Wybierz rok premiery:</label>
+        <select class="form-select" name="releaseYear" id="releaseYear">
+      <option value="">---</option>
+      <?php
+        $sql = "SELECT DISTINCT releaseYear FROM videos ORDER BY releaseYear DESC";
+        $result = $db->query($sql);
+        while ($row = $result->fetch_assoc()) {
+          echo "<option value='".$row['releaseYear']."'>".$row['releaseYear']."</option>";
+        }
+      ?>
+    </select></div>
+    </div>
 
+
+  </div>
   
   <div id="movie_list"></div>
-
+  </div>
         <!-- Footer-->
-        <footer class="py-5 bg-dark">
+      <!-- Footer-->
+      <footer class="py-5 bg-dark">
             <div class="container px-4 px-lg-5"><p class="m-0 text-center text-white">KNS Web Services &copy; Wypożyczalnia DVD 2023</p></div>
         </footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>  
+        <script src="../js/scripts.js"></script> 
 </body>
 <script>
     function req(id)
