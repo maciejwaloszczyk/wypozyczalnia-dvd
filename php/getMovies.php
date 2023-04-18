@@ -32,21 +32,29 @@
   }}
 
   $result = $db->query($sql);
-  if ($result->num_rows > 0) {    
-    echo "<div style='display: flex; flex-wrap: wrap;'>";
+  if ($result->num_rows > 0) {
+    echo "<div class='row gx-4 gx-lg-5'>";
+    $i = 1;
     while ($row = $result->fetch_assoc()) {
-      echo "<div style='width: 33.33%; box-sizing: border-box; padding: 10px;'>";
-      echo "<a href='moviePage.php?id=" . $row['id'] . "'><h3>" . $row['title'] . "</h3></a>";
-      echo "<p>Genre: " . $row['genre'] . "</p>";
-      echo "<p>Director: " . $row['director'] . "</p>";
-      echo "<p>Release Year: " . $row['releaseYear'] . "</p>";
-      echo "<a href='moviePage.php?id=" . $row['id'] . "'><img src='" . $row['photoDirectory'] . "' style='width: 100%;'></a>";
-      echo "<a class='btn btn-primary btn-sm' href='moviePage.php?id=" . $row['id'] . "'>More info</a>";
+      echo "<div class='col-md-4 mb-5'>";
+      echo "<div class='card h-100'>";
+      echo "<div class='card-body'>";
+      echo "<h2 class='card-title'>" . $row['title'] . "</h2>";
+      echo "<p class='card-text'> " . $row['genre'] . "</p>";
       echo "</div>";
+      echo "<div class='nav-link' href='#!'><img class='mx-auto d-block col-md-11 mb-5' src='" . $row['photoDirectory'] . "'/></a></div>";
+      echo "<div class='card-footer'><a class='btn btn-primary btn-sm' href='../pages/moviePage.php?id=". $row['id'] . "'>More info</a></div>";
+      echo "</div>";
+      echo "</div>";
+      if ($i % 3 == 0 && $i != $result->num_rows) {
+        echo "</div><div class='row gx-4 gx-lg-5'>";
+      }
+      $i++;
     }
     echo "</div>";
   } else {
-    echo "No movies found";
+    echo "<div class='no-movies-found-message'><h4>Nie znaleziono filmów według wybranych kategorii</h4></div>";
+    echo "</div>";
   }
 
   $db->close();
