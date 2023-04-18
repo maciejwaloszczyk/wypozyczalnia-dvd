@@ -53,147 +53,143 @@
                     <a class="btn btn-primary" href="#!">Call to Action!</a>
                 </div> -->
             </div>
-            <!-- Call to Action-->
-            <div class="my-5 py-4">
-                <div class="card-body">
-                    <div class="input-group">
-                        <div class="form-outline">
-                          <a class="list" href="pages/list.php">Wszystkie filmy</a>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
             <!-- Content Row-->
 
 
         
 
-        <p>Najnowsze filmy</p>
-        <?php
-        session_start();
-        $conn=new mysqli('localhost:3306', USER, PASSWD, DBNAME);
-        $res=$conn->query("SELECT * FROM videos ORDER BY releaseYear DESC;")->fetch_all(MYSQLI_ASSOC);
-        $conn->close();
-        for($i=0;$i<9;$i++)
-        {
-            if($i%3==0)
-            {
-                if($i!=0)
-                {
-                    ?>
-                    </div>
-                    <?php
-                }
-                ?>
-                <div class="row gx-4 gx-lg-5">
-                <?php
-            }
-            ?>
-                    <div class="col-md-4 mb-5">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <h2 class="card-title"><?=$res[$i]["title"]?></h2>
-                                <p class="card-text"><?=$res[$i]["genre"]?></p>
-                            </div>
-                            <?php
-                            if(isset($_SESSION["user"])){
-                                $conn=new mysqli('localhost:3306', USER, PASSWD, DBNAME);
-                                $isLoaned=$conn->query("SELECT * FROM rental_data WHERE id_film={$res[$i]["id"]} and id_user={$_SESSION["user"]}")->fetch_assoc();
-                            }
-                            ?>
-                            <div class="nav-link" href="#!"><img class="mx-auto d-block col-md-11 mb-5" src="<?=$res[$i]["photoDirectory"]?>" alt="..." /></a></div>
-                            <div class="card-footer"><a class="btn btn-primary btn-sm" href="pages/moviePage.php?id=<?=$res[$i]["id"]?>">More Info</a>
-                            <?php if(isset($_SESSION["user"])){ ?>
-                                <?php
-                                    if($isLoaned == NULL)
-                                    {?>
-                                        <button class="btn btn-primary btn-sm" onclick="req(<?php echo $res[$i]['id']; ?>)">Wypożycz</button><?php
-                                    }
-                                    else
-                                    {?>
-                                        <button class="btn btn-primary btn-sm" disabled>Wypożyczone</button><?php
-                                    }
-                                ?>
-                            <?php
-                            }
-                            ?>
-                        </div>
-                        </div>
-                    </div>
+            <h1>Najnowsze filmy</h1>
             <?php
-        }
-        ?>
-
-    <p>Najpopularniejsze filmy</p>
-        <?php
-        $conn=new mysqli('localhost:3306', USER, PASSWD, DBNAME);
-        $res=$conn->query("SELECT videos.*,COUNT(videos.id) as num FROM rental_data JOIN videos ON videos.id=id_film GROUP BY id_film ORDER BY num DESC;")->fetch_all(MYSQLI_ASSOC);
-        $conn->close();
-        for($i=0;$i<count($res);$i++)
-        {
-            if($i%3==0)
+            session_start();
+            $conn=new mysqli('localhost:3306', USER, PASSWD, DBNAME);
+            $res=$conn->query("SELECT * FROM videos ORDER BY releaseYear DESC;")->fetch_all(MYSQLI_ASSOC);
+            $conn->close();
+            for($i=0;$i<9;$i++)
             {
-                if($i!=0)
+                if($i%3==0)
                 {
+                    if($i!=0)
+                    {
+                        ?>
+                        </div>
+                        <?php
+                    }
                     ?>
-                    </div>
+                    <div class="row gx-4 gx-lg-5">
                     <?php
                 }
                 ?>
-                <div class="row gx-4 gx-lg-5">
-                <?php
-            }
-            ?>
-                    <div class="col-md-4 mb-5">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <h2 class="card-title"><?=$res[$i]["title"]?></h2>
-                                <p class="card-text"><?=$res[$i]["genre"]?></p>
-                            </div>
-                            <?php
+                        <div class="col-md-4 mb-5">
+                            <a class="link-dark :focus" href="pages/moviePage.php?id=<?=$res[$i]["id"]?>">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h2 class="card-title"><?=$res[$i]["title"]?></h2>
+                                    <p class="card-text"><?=$res[$i]["genre"]?></p>
+                                </div>
+                                <?php
                                 if(isset($_SESSION["user"])){
                                     $conn=new mysqli('localhost:3306', USER, PASSWD, DBNAME);
                                     $isLoaned=$conn->query("SELECT * FROM rental_data WHERE id_film={$res[$i]["id"]} and id_user={$_SESSION["user"]}")->fetch_assoc();
                                 }
-                            ?>
-                            <div class="nav-link" href="#!"><img class="mx-auto d-block col-md-11 mb-5" src="<?=$res[$i]["photoDirectory"]?>" alt="..." /></a></div>
-                            <div class="card-footer"><a class="btn btn-primary btn-sm" href="pages/moviePage.php?id=<?=$res[$i]["id"]?>">More Info</a>
-                            <?php if(isset($_SESSION["user"])){ ?>
-                                <?php
-                                    if($isLoaned == NULL)
-                                    {?>
-                                        <button class="btn btn-primary btn-sm" onclick="req(<?php echo $res[$i]['id']; ?>)">Wypożycz</button><?php
-                                    }
-                                    else
-                                    {?>
-                                        <button class="btn btn-primary btn-sm" disabled>Wypożyczone</button><?php
-                                    }
                                 ?>
-                            <?php
-                            }
-                            ?>
+                                <div class="nav-link" href="pages/moviePage.php?id=<?=$res[$i]["id"]?>"><img class="mx-auto d-block col-md-11 mb-5" src="<?=$res[$i]["photoDirectory"]?>" alt="..." /></a></div>
+                                <div class="card-footer text-center">
+                                    <div class="card text-left">
+                                        <a class="btn btn-light" href="pages/moviePage.php?id=<?=$res[$i]["id"]?>">Więcej informacji</a>                                        
+                                    </div>
+                                    <div class="card text-right">
+                                        <?php if(isset($_SESSION["user"])){ ?>
+                                            <?php
+                                                if($isLoaned == NULL)
+                                                {?>
+                                                    <button class="btn btn-theme btn-sm" onclick="req(<?php echo $res[$i]['id']; ?>)">Wypożycz</button><?php
+                                                }
+                                                else
+                                                {?>
+                                                    <button class="btn btn-theme btn-sm" disabled>Wypożyczone</button><?php
+                                                }
+                                            ?>
+                                        <?php
+                                        }
+                                        ?>                                        
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        </div>
-                    </div>
-            <?php
-        }//błąd domknięcia div
-        ?>
-
-
-            
-
+                        </a>
+                <?php
+            }
+            ?>
             </div>
 
+            <h1>Najpopularniejsze filmy</h1>
+            <?php
+            $conn=new mysqli('localhost:3306', USER, PASSWD, DBNAME);
+            $res=$conn->query("SELECT videos.*,COUNT(videos.id) as num FROM rental_data JOIN videos ON videos.id=id_film GROUP BY id_film ORDER BY num DESC;")->fetch_all(MYSQLI_ASSOC);
+            $conn->close();
+            for($i=0;$i<count($res);$i++)
+            {
+                if($i%3==0)
+                {
+                    if($i!=0)
+                    {
+                        ?>
+                        </div>
+                        <?php
+                    }
+                    ?>
+                    <div class="row gx-4 gx-lg-5">
+                    <?php
+                }
+                ?>
+                        <div class="col-md-4 mb-5">
+                            <a class="link-dark :focus" href="pages/moviePage.php?id=<?=$res[$i]["id"]?>">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h2 class="card-title"><?=$res[$i]["title"]?></h2>
+                                    <p class="card-text"><?=$res[$i]["genre"]?></p>
+                                </div>
+                                <?php
+                                    if(isset($_SESSION["user"])){
+                                        $conn=new mysqli('localhost:3306', USER, PASSWD, DBNAME);
+                                        $isLoaned=$conn->query("SELECT * FROM rental_data WHERE id_film={$res[$i]["id"]} and id_user={$_SESSION["user"]}")->fetch_assoc();
+                                    }
+                                ?>
+                                <div class="nav-link" href="pages/moviePage.php?id=<?=$res[$i]["id"]?>"><img class="mx-auto d-block col-md-11 mb-5" src="<?=$res[$i]["photoDirectory"]?>" alt="..." /></a></div>
+                                <div class="card-footer text-center">
+                                    <div class="card text-left">
+                                        <a class="btn btn-light" href="pages/moviePage.php?id=<?=$res[$i]["id"]?>">Więcej informacji</a>                                        
+                                    </div>
+                                    <div class="card text-right">
+                                        <?php if(isset($_SESSION["user"])){ ?>
+                                            <?php
+                                                if($isLoaned == NULL)
+                                                {?>
+                                                    <button class="btn btn-theme btn-sm" onclick="req(<?php echo $res[$i]['id']; ?>)">Wypożycz</button><?php
+                                                }
+                                                else
+                                                {?>
+                                                    <button class="btn btn-theme btn-sm" disabled>Wypożyczone</button><?php
+                                                }
+                                            ?>
+                                        <?php
+                                        }
+                                        ?>                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </a>
+                <?php
+            }
+            ?>
+            </div>
         </div>
-
-
-
-
         <!-- Footer-->
-        <footer class="py-5 bg-dark">
-            <div class="container px-4 px-lg-5"><p class="m-0 text-center text-white">KNS Web Services &copy; Wypożyczalnia DVD 2023</p></div>
+        <footer class="py-5 bg-dark ">
+        <div class="container px-4 px-lg-5"><p class="m-0 text-center text-white">KNS Web Services &copy; Wypożyczalnia DVD 2023</p></div>
         </footer>
+
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
@@ -210,7 +206,6 @@
             xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
             xhr.onreadystatechange=()=>{}
             xhr.send("id="+id);
-            window.location.reload()
         }
         
     }

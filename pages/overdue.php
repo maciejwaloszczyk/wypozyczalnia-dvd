@@ -72,7 +72,7 @@ session_start();
                                     <td><?=$part["privileges"]?></td>
                                     <td><?=$part["is_banned"]?></td>
                                     <td><?=$part["is_archived"]?></td>
-                                    <td><a href="overdueMovies.php?id='<?=$part["id_user"]?>'">Lista zaległych filmów</a></td>
+                                    <td><h6><a href="overdueMovies.php?id='<?=$part["id_user"]?>'">Lista zaległych filmów</a><h6></td>
                                 </tr>
                                 <?php } ?>
                             </table>
