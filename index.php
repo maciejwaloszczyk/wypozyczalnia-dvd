@@ -97,12 +97,39 @@
                                     <div class="card text-left">
                                         <a class="btn btn-light" href="pages/moviePage.php?id=<?=$res[$i]["id"]?>">Więcej informacji</a>                                        
                                     </div>
-                                    <div class="card text-right">
+                                    <div class="card text-right BtnLoan<?=$res[$i]["id"]?>">
                                         <?php if(isset($_SESSION["user"])){ ?>
                                             <?php
                                                 if($isLoaned == NULL)
                                                 {?>
-                                                    <button class="btn btn-theme btn-sm" onclick="req(<?php echo $res[$i]['id']; ?>)">Wypożycz</button><?php
+                                                    <!-- Button trigger modal -->
+                                                    <button type="button" class="btn btn-theme btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $res[$i]['id']; ?>">
+                                                    Wypożycz
+                                                    </button>
+
+                                                    <!-- Modal -->
+                                                    <div class="modal fade" id="exampleModal<?php echo $res[$i]['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Czy na pewno chcesz wyporzyczyć ten film?;</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                        <p>Tytuł: <?=$res[$i]["title"]?></p>
+                                                        <p>Gatunek: <?=$res[$i]["genre"]?></p>
+                                                        <p>Reżyser: <?=$res[$i]["director"]?></p>
+                                                        <p>Data Wydania: <?=$res[$i]["releaseYear"]?></p>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Anuluj</button>
+                                                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="req(<?php echo $res[$i]['id']; ?>)">Wypożycz</button>
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                    
+                                                    <?php
                                                 }
                                                 else
                                                 {?>
@@ -160,12 +187,42 @@
                                     <div class="card text-left">
                                         <a class="btn btn-light" href="pages/moviePage.php?id=<?=$res[$i]["id"]?>">Więcej informacji</a>                                        
                                     </div>
-                                    <div class="card text-right">
+                                    <div class="card text-right BtnLoan<?=$res[$i]["id"]?>">
                                         <?php if(isset($_SESSION["user"])){ ?>
                                             <?php
                                                 if($isLoaned == NULL)
                                                 {?>
-                                                    <button class="btn btn-theme btn-sm" onclick="req(<?php echo $res[$i]['id']; ?>)">Wypożycz</button><?php
+                                                    <!-- Button trigger modal -->
+                                                    <button type="button" class="btn btn-theme btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $res[$i]['id']; ?>">
+                                                    Wypożycz
+                                                    </button>
+
+                                                    <!-- Modal -->
+                                                    <div class="modal fade" id="exampleModal<?php echo $res[$i]['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Czy na pewno chcesz wyporzyczyć ten film?;</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                        <p>Tytuł: <?=$res[$i]["title"]?></p>
+                                                        <p>Gatunek: <?=$res[$i]["genre"]?></p>
+                                                        <p>Reżyser: <?=$res[$i]["director"]?></p>
+                                                        <p>Data Wydania: <?=$res[$i]["releaseYear"]?></p>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Anuluj</button>
+                                                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="req(<?php echo $res[$i]['id']; ?>)">Wypożycz</button>
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    <?php
                                                 }
                                                 else
                                                 {?>
@@ -185,6 +242,9 @@
             ?>
             </div>
         </div>
+
+
+
         <!-- Footer-->
         <footer class="py-5 bg-dark ">
         <div class="container px-4 px-lg-5"><p class="m-0 text-center text-white">KNS Web Services &copy; Wypożyczalnia DVD 2023</p></div>
@@ -198,17 +258,27 @@
     <script>
     function req(id)
     {
-        if(confirm("Czy na pewno chcesz wypożyczyć ten film?"))
-        {
             const xhr=new XMLHttpRequest();
             xhr.open("POST","php/borrow.php",true);
 
             xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
             xhr.onreadystatechange=()=>{}
             xhr.send("id="+id);
-            window.location.reload()
-        }
+            //window.location.reload()
+            //document.getElementById("BtnLoan"+id).innerHTML="<button class=\"btn btn-theme btn-sm\" disabled>Wypożyczone</button>";//Make to work with multiple
+            for(part of document.getElementsByClassName("BtnLoan"+id))
+            {
+                part.innerHTML="<button class=\"btn btn-theme btn-sm\" disabled>Wypożyczone</button>";
+            }
         
     }
+
+    var myModal = document.getElementById('myModal')
+    var myInput = document.getElementById('myInput')
+
+    myModal.addEventListener('shown.bs.modal', function () {
+    myInput.focus()
+    })
+
 </script>
 </html>
