@@ -1,64 +1,38 @@
 <?php
 include('../php/creds.php');
 extract($_POST);
-// if (isset($_POST['Dalej']))
-// {        
-//     $database_connection = new mysqli('localhost:3306', USER, PASSWD, DBNAME);
-//     function randomizeCode()
-//     {
-//         $activation_code = rand(123456, 998765);
-//         return $activation_code;
-//     }
-//     $activation_code = randomizeCode();
-//     $codeCheck = $database_connection -> query("SELECT id FROM users WHERE activation_code LIKE '$activation_code'");
-//     while(($codeCheck -> fetch_assoc()) != NULL)
-//     {
-//         $activation_code = randomizeCode();
-//     }
-//     $updateCode = $database_connection -> query("UPDATE users SET activation_code = '$activation_code' WHERE email LIKE '$InputEmail1'");
-
-//     $from = 'noreply@macwal04.smarthost.pl';
-//     $fromName = 'KNSRent - najlepsza wypożyczalnia DVD!'; 
-    
-//     $subject = "Przypomnienie hasła - KNSRent";
-
-//     $link = 'http://www.macwal04.smarthost.pl/wypozyczalnia-dvd/pages/remindMe2.php?a=' . $activation_code;
-
-//     $htmlContent = file_get_contents("../assets/mailTemplate/mailTemplate_part1.html") . $link . file_get_contents("../assets/mailTemplate/mailTemplate_part2.html") . $link . file_get_contents("../assets/mailTemplate/mailTemplate_part3.html") . $link . file_get_contents("../assets/mailTemplate/mailTemplate_part4.html");
-    
-//     // Set content-type header for sending HTML email 
-//     $headers = "MIME-Version: 1.0" . "\r\n"; 
-//     $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n"; 
-    
-//     // Additional headers 
-//     $headers .= 'From: '.$fromName.'<'.$from.'>' . "\r\n"; 
-    
-//     // Send email
-//     if(mail($InputEmail1, $subject, $htmlContent, $headers)){ 
-        
-//     }else{ 
-//        echo '<script>alert("Wystąpił błąd w wysłaniu kodu aktywacji! Zarejestruj się ponownie!")</script>'; 
-//     }
-//     header("Location: /wypozyczalnia-dvd/pages/login.php?remindMe=true&bref=/wypozyczalnia-dvd/index.php");
-// }
+session_start();
+if(isset($_SESSION['user'])==false)
+{
+    header("Location: /wypozyczalnia-dvd/index.php");
+}
 if (isset($_POST['Delete']))
 {
-    session_start();
     $idUser = $_SESSION['user'];
     $database_connection = new mysqli('localhost:3306', USER, PASSWD, DBNAME);
     $a=$database_connection->query("SELECT * FROM users WHERE id LIKE '$idUser' AND password LIKE '$InputPassword1' AND is_active = 1 AND is_archived = 0;")->fetch_all(MYSQLI_ASSOC);
     if(Count($a)!=0)
     {
-        if ($a[0]["is_banned"]==1)
+        $b=$database_connection->query("SELECT * FROM rental_data WHERE id_user LIKE '$idUser' AND isReturned = 0 AND date_of_return < CURDATE()")->fetch_all(MYSQLI_ASSOC);
+        if(Count($b)==0)
         {
-            header("Location: /wypozyczalnia-dvd/pages/login.php?bannedUser=true&bref=$bref");
+            if ($a[0]["is_banned"]==1)
+            {
+                header("Location: /wypozyczalnia-dvd/pages/login.php?bannedUser=true&bref=$bref");
+            }
+            {
+                $result = $database_connection -> query("UPDATE users SET is_archived = 1 WHERE id = $idUser");
+                $database_connection->close();
+                session_destroy();
+                header("Location: /wypozyczalnia-dvd/index.php");
+            }            
         }
-        {
-            $result = $database_connection -> query("UPDATE users SET is_archived = 1 WHERE id = $idUser");
-            $database_connection->close();
-            session_destroy();
-            header("Location: /wypozyczalnia-dvd/index.php");
-        }
+        else ?>
+        <script>
+            alert("Błąd systemu: Użytkownik nie oddał wszystkich płyt DVD!");
+        </script>
+        <?php
+
     }
     else header("Location: /wypozyczalnia-dvd/pages/deleteAccount.php?userLoginError=true");
 }

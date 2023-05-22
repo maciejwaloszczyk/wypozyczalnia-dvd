@@ -1,11 +1,14 @@
 <?php
     session_start();
     include('../php/creds.php');
+    if(isset($_SESSION['user'])==false)
+    {
+        header("Location: /wypozyczalnia-dvd/index.php");
+    }
     $idUser = $_SESSION['user'];
     $database_connection = new mysqli('localhost:3306', USER, PASSWD, DBNAME);
     $result = $database_connection -> query("SELECT * FROM users WHERE id = $idUser");
     $read = $result -> fetch_assoc();
-
     if (isset($_POST['option']))
     {
         if ($_POST['option']=='Edycja')
