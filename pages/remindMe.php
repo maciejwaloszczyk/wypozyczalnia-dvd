@@ -24,7 +24,7 @@ if (isset($_POST['Dalej']))
 
     $link = 'http://www.macwal04.smarthost.pl/wypozyczalnia-dvd/pages/remindMe2.php?a=' . $activation_code;
 
-    $htmlContent = file_get_contents("../assets/mailTemplate/mailTemplate_part1.html") . $link . file_get_contents("../assets/mailTemplate/mailTemplate_part2.html") . $link . file_get_contents("../assets/mailTemplate/mailTemplate_part3.html") . $link . file_get_contents("../assets/mailTemplate/mailTemplate_part4.html");
+    $htmlContent = file_get_contents("../assets/remindTemplate/mailTemplate_part1.html") . $link . file_get_contents("../assets/mailTemplate/mailTemplate_part2.html") . $link . file_get_contents("../assets/mailTemplate/mailTemplate_part3.html") . $link . file_get_contents("../assets/mailTemplate/mailTemplate_part4.html");
     
     // Set content-type header for sending HTML email 
     $headers = "MIME-Version: 1.0" . "\r\n"; 
