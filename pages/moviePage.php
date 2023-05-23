@@ -36,12 +36,37 @@ $conn->close();
                     <div class="row">
                         <img class="mx-auto col-md-8 mb-5" src="<?=$res["photoDirectory"]?>" alt="">
                     </div>
-                    <div class="row my-4">
+                    <div class="row my-4 BtnLoan<?php echo $res['id']; ?>">
                     <?php if(isset($_SESSION["user"])){ ?>
                             <?php
                                 if($isLoaned == NULL)
                                 {?>
-                                    <button class="btn btn-theme btn-sm" onclick="req(<?php echo $res['id']; ?>)">Wypożycz</button><?php
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-theme btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $res['id']; ?>">Wypożycz</button>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModal<?php echo $res['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Czy na pewno chcesz wyporzyczyć ten film?</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                        <p>Tytuł: <?=$res["title"]?></p>
+                                        <p>Gatunek: <?=$res["genre"]?></p>
+                                        <p>Reżyser: <?=$res["director"]?></p>
+                                        <p>Data Wydania: <?=$res["releaseYear"]?></p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Anuluj</button>
+                                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="req(<?php echo $res['id']; ?>)">Wypożycz</button>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    
+                                    <?php
                                 }
                                 else
                                 {?>
@@ -77,16 +102,26 @@ $conn->close();
     <script>
         function req(id)
         {
-            if(confirm("Czy na pewno chcesz wypożyczyć ten film?"))
-            {
                 const xhr=new XMLHttpRequest();
-                xhr.open("POST","../php/borrow.php",true);
+                xhr.open("POST","php/borrow.php",true);
 
                 xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
                 xhr.onreadystatechange=()=>{}
                 xhr.send("id="+id);
-                window.location.reload()
-            }
+                //window.location.reload()
+                //document.getElementById("BtnLoan"+id).innerHTML="<button class=\"btn btn-theme btn-sm\" disabled>Wypożyczone</button>";//Make to work with multiple
+                for(part of document.getElementsByClassName("BtnLoan"+id))
+                {
+                    part.innerHTML="<button class=\"btn btn-theme btn-sm\" disabled>Wypożyczone</button>";
+                }
+            
         }
+
+        var myModal = document.getElementById('myModal')
+        var myInput = document.getElementById('myInput')
+
+        myModal.addEventListener('shown.bs.modal', function () {
+        myInput.focus()
+        })
     </script>
 </html>
