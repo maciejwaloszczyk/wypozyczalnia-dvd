@@ -94,22 +94,6 @@
                   </div>
                 </div>
               </div>
-              <!-- Single Advisor-->
-              <div class="col-12 col-sm-6 col-lg-3">
-                <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
-                  <!-- Team Thumb-->
-                  <div class="advisor_thumb"><img src="/wypozyczalnia-dvd/assets/profileImages/Pizzerman.jpg" alt="">
-                    <!-- Social Info-->
-                    <div class="social-info"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-linkedin"></i></a></div>
-                  </div>
-                  <!-- Team Details-->
-                  <div class="single_advisor_details_info">
-                    <h6>Armando Lisi</h6>
-                    <p class="designation">Hosting Founder</p>
-                    <p class="designation"><i>Native Italian | Pizzamaker</i></p>
-                  </div>
-                </div>
-              </div>
             </div>
         </div>
         <!-- Footer-->
