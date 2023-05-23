@@ -90,6 +90,9 @@
                         </div>
                     </div>
                     <!-- drugi level -->
+                    <?php 
+                     $resultHistory = $database_connection -> query("SELECT videos.* FROM videos, rental_data WHERE videos.id = rental_data.id_film AND rental_data.id_user = $idUser;")->fetch_all(MYSQLI_ASSOC);
+                     ?>
                     <div class="row">
                         <div class="col-md-5 border-right">
                             <div class="p-3 py-5">
@@ -100,45 +103,28 @@
                         </div>
                     </div>
                     <div class="d-flex justify-content-start h-50 w-100">
-                        <div class="row">
-                            <div class="card h-100 col">
-                                <div class="card-body">        
-                                </div>
-                                <div class="card-subtitle" href="#!"><img class="mx-auto d-block col-md-8 mb-3" src="https://2.allegroimg.com/s1024/0c8dfc/e1ecbf9745b5a9f6b25d6a6a4722.png" alt="..." /></a>
-                                    <h2 class="d-flex card-footer justify-content-center">TITLE</h2>
-                                </div>  
-                            </div>
-                            <div class="card h-100 col">
-                                <div class="card-body">        
-                                </div>
-                                <div class="card-subtitle" href="#!"><img class="mx-auto d-block col-md-8 mb-3" src="https://2.allegroimg.com/s1024/0c8dfc/e1ecbf9745b5a9f6b25d6a6a4722.png" alt="..." /></a>
-                                    <h2 class="d-flex card-footer justify-content-center">TITLE</h2>
-                                </div>  
-                            </div>
-                            <div class="card h-100 col">
-                                <div class="card-body">        
-                                </div>
-                                <div class="card-subtitle" href="#!"><img class="mx-auto d-block col-md-8 mb-3" src="https://2.allegroimg.com/s1024/0c8dfc/e1ecbf9745b5a9f6b25d6a6a4722.png" alt="..." /></a>
-                                    <h2 class="d-flex card-footer justify-content-center">TITLE</h2>
-                                </div>  
-                            </div>
-                            <div class="card h-100 col">
-                                <div class="card-body">        
-                                </div>
-                                <div class="card-subtitle" href="#!"><img class="mx-auto d-block col-md-8 mb-3" src="https://2.allegroimg.com/s1024/0c8dfc/e1ecbf9745b5a9f6b25d6a6a4722.png" alt="..." /></a>
-                                    <h2 class="d-flex card-footer justify-content-center">TITLE</h2>
-                                </div>  
-                            </div>
-                            <div class="card h-100 col">
-                                <div class="card-body">        
-                                </div>
-                                <div class="card-subtitle" href="#!"><img class="mx-auto d-block col-md-8 mb-3" src="https://2.allegroimg.com/s1024/0c8dfc/e1ecbf9745b5a9f6b25d6a6a4722.png" alt="..." /></a>
-                                    <h2 class="d-flex card-footer justify-content-center">TITLE</h2>
-                                </div>  
-                            </div>
-                        </div>
-
+                        <?php 
+                        ?><div class="row"><?php
+                            for($i=0;$i<count($resultHistory);$i++)
+                            {
+                                if($i%5==0&&$i!=0)
+                                {
+                                    ?></div><br><div class="row"><?php
+                                }
+                                ?>
+                                <div class="card h-100 col">
+                                    <div class="card-body">        
+                                    </div>
+                                    <div class="card-subtitle" href="#!"><img class="mx-auto d-block col-md-8 mb-3" src="<?=$resultHistory[$i]['photoDirectory']?>" alt="..." /></a>
+                                    <h2 class="d-flex card-footer justify-content-center"><?=$resultHistory[$i]["title"] ?></h2>
+                                    </div>  
+                                </div><?php
+                            }
+                        ?></div>
                     </div>
+
+
+                    
                      
                 </div>
             </div>
