@@ -103,7 +103,7 @@ $conn->close();
         function req(id)
         {
                 const xhr=new XMLHttpRequest();
-                xhr.open("POST","php/borrow.php",true);
+                xhr.open("POST","../php/borrow.php",true);
 
                 xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
                 xhr.onreadystatechange=()=>{}
