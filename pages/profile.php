@@ -150,7 +150,7 @@
                     </div>
                     <!-- skrypt PHP -->
                     <?php
-                    $resultVideos = $database_connection -> query("SELECT videos.* FROM videos, rental_data WHERE videos.id = rental_data.id_film AND rental_data.id_user = $idUser");
+                    $resultVideos = $database_connection -> query("SELECT videos.* FROM videos, rental_data WHERE videos.id = rental_data.id_film AND rental_data.id_user = $idUser AND rental_data.isReturned = 0");
                     function resultToArray($result) {
                         $rows = array();
                         while($row = $result->fetch_assoc()) {
