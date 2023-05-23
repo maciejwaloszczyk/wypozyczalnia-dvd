@@ -102,30 +102,22 @@
                             </div>
                         </div>
                     </div>
-                    <div class="d-flex justify-content-start h-50 w-100">
+                    <ul class="list-group list-group-flush">
                         <?php 
                         ?><div class="row gx-4 gx-lg-5"><?php
                             for($i=0;$i<count($resultHistory);$i++)
-                            {   
-                                if($i%5==0&&$i!=0)
+                            {
+                                if($i%1==0&&$i!=0)
                                 {
                                     ?></div><br><div class="row"><?php
                                 }
                                 ?>
-                                <div class="col-md-4 mb-5">
-                                    <a class="link-dark :focus" href="moviePage.php?id=<?=$resultHistory[$i]["id"]?>">
-                                    <div class="card h-100 col">
-                                        <div class="card-body">        
-                                        </div>
-                                        <div class="card-subtitle" href="#!"><img class="mx-auto d-block col-md-8 mb-3" src="<?=$resultHistory[$i]['photoDirectory']?>" alt="..." /></a>
-                                        <h2 class="d-flex card-footer justify-content-center"><?=$resultHistory[$i]["title"] ?></h2>
-                                        </div>  
-                                    </div>
-                                    </a>
-                                </div><?php
+
+                                    <a class="link-dark :focus" href="moviePage.php?id=<?=$resultHistory[$i]["id"]?>"><li class="d-flex justify-content-center list-group-item"><?=$resultHistory[$i]["title"] ?></li></a>
+                                <?php
                             }
                         ?></div>
-                    </div>
+                    </ul>
 
                 </div>
             </div>
