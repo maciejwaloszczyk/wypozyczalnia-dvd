@@ -14,27 +14,52 @@
         <link href="../css/styles_2.css" rel="stylesheet" />
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
-    $(document).ready(function() {
-     getMovies(); 
+$(document).ready(function() {
+  getMovies();
 
-    $("#genre, #director, #releaseYear").change(function() {
-      getMovies(); 
+  $("#genre, #director, #releaseYear").change(function() {
+    getMovies();
+  });
+
+  function getMovies() {
+    var selected_genre = $("#genre").val();
+    var selected_director = $("#director").val();
+    var selected_year = $("#releaseYear").val();
+    $.ajax({
+      url: "../php/getMovies.php",
+      method: "POST",
+      data: {
+        genre: selected_genre,
+        director: selected_director,
+        releaseYear: selected_year
+      },
+      success: function(data) {
+        $("#movie_list").html(data);
+        initializeLoanButtons();
+      }
     });
+  }
 
-    function getMovies() {
-      var selected_genre = $("#genre").val();
-      var selected_director = $("#director").val();
-      var selected_year = $("#releaseYear").val();
-      $.ajax({
-        url: "../php/getMovies.php",
-        method: "POST",
-        data: {genre: selected_genre, director: selected_director, releaseYear: selected_year},
-        success: function(data) {
-          $("#movie_list").html(data);
-        }
+  function initializeLoanButtons() {
+    $(".BtnLoan").each(function() {
+      var movieId = $(this).data("id");
+      var buttonElement = $(this).find(".loan-button");
+
+      buttonElement.click(function() {
+        var loanButton = $(this);
+        $.ajax({
+          url: "../php/borrow.php",
+          method: "POST",
+          data: { id: movieId },
+          success: function() {
+            loanButton.attr("disabled", true).text("Wypożyczone");
+          }
+        });
       });
-    }
+    });
+  }
 });
+
   </script>
   <style>
     .flex-wrapper {
@@ -117,20 +142,30 @@
         <!-- Core theme JS-->
         <script src="../js/scripts.js"></script> 
 </body>
-<script>
+    <script>
     function req(id)
     {
-        if(confirm("Czy na pewno chcesz wypożyczyć ten film?"))
-        {
             const xhr=new XMLHttpRequest();
-            xhr.open("POST","php/borrow.php",true);
+            xhr.open("POST","../php/borrow.php",true);
 
             xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
             xhr.onreadystatechange=()=>{}
             xhr.send("id="+id);
-            window.location.reload()
-        }
+            //window.location.reload()
+            //document.getElementById("BtnLoan"+id).innerHTML="<button class=\"btn btn-theme btn-sm\" disabled>Wypożyczone</button>";//Make to work with multiple
+            for(part of document.getElementsByClassName("BtnLoan"+id))
+            {
+                part.innerHTML="<button class=\"btn btn-theme btn-sm\" disabled>Wypożyczone</button>";
+            }
         
     }
+
+    var myModal = document.getElementById('myModal')
+    var myInput = document.getElementById('myInput')
+
+    myModal.addEventListener('shown.bs.modal', function () {
+    myInput.focus()
+    })
+
 </script>
 </html>
