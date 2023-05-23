@@ -7,7 +7,7 @@
         <meta name="author" content="" />
         <title>Wypożyczalnia DVD</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.png" />
+        <link rel="icon" type="image/x-icon" href="/wypozyczalnia-dvd/assets/favicon.png" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="../css/styles.css" rel="stylesheet" />
         <link href="../css/styles_2.css" rel="stylesheet" />
@@ -34,14 +34,15 @@
               <div class="col-12 col-sm-6 col-lg-3">
                 <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
                   <!-- Team Thumb-->
-                  <div class="advisor_thumb"><img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+                  <div class="advisor_thumb"><img src="/wypozyczalnia-dvd/assets/profileImages/Roman.jpg" alt="">
                     <!-- Social Info-->
                     <div class="social-info"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-linkedin"></i></a></div>
                   </div>
                   <!-- Team Details-->
                   <div class="single_advisor_details_info">
-                    <h6>Samantha Sarah</h6>
-                    <p class="designation">Founder &amp; CEO</p>
+                    <h6>Szymon Roman</h6>
+                    <p class="designation">Database Associative</p>
+                    <p class="designation"><i>Python | PHP | JavaScript | MySQL</i></p>
                   </div>
                 </div>
               </div>
@@ -55,8 +56,9 @@
                   </div>
                   <!-- Team Details-->
                   <div class="single_advisor_details_info">
-                    <h6>Nazrul Islam</h6>
-                    <p class="designation">UI Designer</p>
+                    <h6>Kamil Połacik</h6>
+                    <p class="designation">Back-end Developer</p>
+                    <p class="designation"><i>PHP | JavaScript</i></p>
                   </div>
                 </div>
               </div>
@@ -64,14 +66,15 @@
               <div class="col-12 col-sm-6 col-lg-3">
                 <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
                   <!-- Team Thumb-->
-                  <div class="advisor_thumb"><img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="">
+                  <div class="advisor_thumb"><img src="/wypozyczalnia-dvd/assets/profileImages/Waloszczyk.jpg" alt="">
                     <!-- Social Info-->
                     <div class="social-info"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-linkedin"></i></a></div>
                   </div>
                   <!-- Team Details-->
                   <div class="single_advisor_details_info">
-                    <h6>Riyadh Khan</h6>
-                    <p class="designation">Developer</p>
+                    <h6>Maciej Waloszczyk</h6>
+                    <p class="designation">Full Stack Developer</p>
+                    <p class="designation"><i>PHP | HTML | CSS | JavaScript | MySQL</i></p>
                   </div>
                 </div>
               </div>
@@ -79,14 +82,15 @@
               <div class="col-12 col-sm-6 col-lg-3">
                 <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
                   <!-- Team Thumb-->
-                  <div class="advisor_thumb"><img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="">
+                  <div class="advisor_thumb"><img src="/wypozyczalnia-dvd/assets/profileImages/Wolinski.jpg" alt="">
                     <!-- Social Info-->
                     <div class="social-info"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-linkedin"></i></a></div>
                   </div>
                   <!-- Team Details-->
                   <div class="single_advisor_details_info">
-                    <h6>Niloy Islam</h6>
-                    <p class="designation">Marketing Manager</p>
+                    <h6>Krzysztof Woliński</h6>
+                    <p class="designation">Front-end Developer</p>
+                    <p class="designation"><i>HTML | CSS (Bootstrap Technologies)</i></p>
                   </div>
                 </div>
               </div>
