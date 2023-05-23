@@ -19,7 +19,10 @@ session_start();
     if($_SESSION["privileges"]!="ADMIN")
     {
         header("Location: /wypozyczalnia-dvd/index.php");
-        
+    }
+    if(isset($_SESSION["user"])==false)
+    {
+        header("Location: /wypozyczalnia-dvd/index.php");
     }
     if(isset($_GET["id"]))
     {

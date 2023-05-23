@@ -106,7 +106,7 @@
                         <?php 
                         ?><div class="row gx-4 gx-lg-5"><?php
                             for($i=0;$i<count($resultHistory);$i++)
-                            {
+                            {   
                                 if($i%5==0&&$i!=0)
                                 {
                                     ?></div><br><div class="row"><?php
@@ -155,7 +155,6 @@
                         $photoDirectory = $readVideos[$index]['photoDirectory'];
                         ?>
                         <div class='col-md-5 mb-2 w-50'>
-                            <a class="link-dark :focus" href="moviePage.php?id=<?=$resultHistory[$i]["id"]?>">
                                 <div class='card h-100'>
                                     <div class='card-body'>        
                                         <?php
@@ -168,7 +167,6 @@
                                         <h2 class='d-flex card-footer justify-content-center'><?=$title?></h2>
                                     </div>
                                 </div>
-                            </a> 
                         </div>
                     <?php } ?>
 

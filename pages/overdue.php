@@ -20,6 +20,10 @@ session_start();
     {
         header("Location: /wypozyczalnia-dvd/index.php");
     }
+    if(isset($_SESSION["user"])==false)
+    {
+        header("Location: /wypozyczalnia-dvd/index.php");
+    }
     $conn=new mysqli('localhost:3306', USER, PASSWD, DBNAME);//SELECT * FROM `rental_data` INNER JOIN users ON users.id=id_user WHERE isReturned=0 AND date_of_return<CURRENT_DATE; 
     $res=$conn->query("SELECT * FROM `rental_data` INNER JOIN users ON users.id=id_user WHERE isReturned=0 AND date_of_return<CURRENT_DATE GROUP BY id_user; ")->fetch_all(MYSQLI_ASSOC);
     $conn->close();

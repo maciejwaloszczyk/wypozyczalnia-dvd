@@ -20,6 +20,10 @@ session_start();
     {
         header("Location: /wypozyczalnia-dvd/index.php");
     }
+    if(isset($_SESSION["user"])==false)
+    {
+        header("Location: /wypozyczalnia-dvd/index.php");
+    }
     $conn=new mysqli('localhost:3306', USER, PASSWD, DBNAME);
     $res=$conn->query("SELECT * FROM videos")->fetch_all(MYSQLI_ASSOC);
     $conn->close();
