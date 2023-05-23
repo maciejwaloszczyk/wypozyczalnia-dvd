@@ -13,7 +13,7 @@ if (isset($_POST['Delete']))
     $a=$database_connection->query("SELECT * FROM users WHERE id LIKE '$idUser' AND password LIKE '$InputPassword1' AND is_active = 1 AND is_archived = 0;")->fetch_all(MYSQLI_ASSOC);
     if(Count($a)!=0)
     {
-        $b=$database_connection->query("SELECT * FROM rental_data WHERE id_user LIKE '$idUser' AND isReturned = 0 AND date_of_return < CURDATE()")->fetch_all(MYSQLI_ASSOC);
+        $b=$database_connection->query("SELECT * FROM rental_data WHERE id_user LIKE '$idUser' AND isReturned = 0")->fetch_all(MYSQLI_ASSOC);
         if(Count($b)==0)
         {
             if ($a[0]["is_banned"]==1)
