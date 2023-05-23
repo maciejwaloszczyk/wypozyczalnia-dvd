@@ -75,7 +75,7 @@
                                 </div>
                                 <div class='modal-footer'>
                                     <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Anuluj</button>
-                                    <button type='button' class='btn btn-primary' data-bs-dismiss='modal' onclick='req(".$row['id'].")'>Wypożycz</button>
+                                    <button type='button' class='btn btn-theme' data-bs-dismiss='modal' onclick='req(".$row['id'].")'>Wypożycz</button>
                                 </div>
                             </div>
                         </div>
