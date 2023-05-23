@@ -90,6 +90,9 @@
                         </div>
                     </div>
                     <!-- drugi level -->
+                    <?php 
+                     $resultHistory = $database_connection -> query("SELECT videos.* FROM videos, rental_data WHERE videos.id = rental_data.id_film AND rental_data.id_user = $idUser;")->fetch_all(MYSQLI_ASSOC);
+                     ?>
                     <div class="row">
                         <div class="col-md-5 border-right">
                             <div class="p-3 py-5">
@@ -101,7 +104,7 @@
                     </div>
                     <div class="d-flex justify-content-start h-50 w-100">
                         <?php 
-                        ?><div class="row"><?php
+                        ?><div class="row gx-4 gx-lg-5"><?php
                             for($i=0;$i<count($resultHistory);$i++)
                             {
                                 if($i%5==0&&$i!=0)
@@ -109,12 +112,16 @@
                                     ?></div><br><div class="row"><?php
                                 }
                                 ?>
-                                <div class="card h-100 col">
-                                    <div class="card-body">        
+                                <div class="col-md-4 mb-5">
+                                    <a class="link-dark :focus" href="moviePage.php?id=<?=$resultHistory[$i]["id"]?>">
+                                    <div class="card h-100 col">
+                                        <div class="card-body">        
+                                        </div>
+                                        <div class="card-subtitle" href="#!"><img class="mx-auto d-block col-md-8 mb-3" src="<?=$resultHistory[$i]['photoDirectory']?>" alt="..." /></a>
+                                        <h2 class="d-flex card-footer justify-content-center"><?=$resultHistory[$i]["title"] ?></h2>
+                                        </div>  
                                     </div>
-                                    <div class="card-subtitle" href="#!"><img class="mx-auto d-block col-md-8 mb-3" src="<?=$resultHistory[$i]['photoDirectory']?>" alt="..." /></a>
-                                    <h2 class="d-flex card-footer justify-content-center"><?=$resultHistory[$i]["title"] ?></h2>
-                                    </div>  
+                                    </a>
                                 </div><?php
                             }
                         ?></div>
@@ -148,6 +155,7 @@
                         $photoDirectory = $readVideos[$index]['photoDirectory'];
                         ?>
                         <div class='col-md-5 mb-2 w-50'>
+                            <a class="link-dark :focus" href="moviePage.php?id=<?=$resultHistory[$i]["id"]?>">
                                 <div class='card h-100'>
                                     <div class='card-body'>        
                                         <?php
@@ -158,8 +166,9 @@
                                     </div>
                                     <div class='card-subtitle' href='#!'><img class='mx-auto d-block col-md-6 mb-1' src='<?=$photoDirectory?>' alt='...' /></a>
                                         <h2 class='d-flex card-footer justify-content-center'><?=$title?></h2>
-                                    </div>  
+                                    </div>
                                 </div>
+                            </a> 
                         </div>
                     <?php } ?>
 
