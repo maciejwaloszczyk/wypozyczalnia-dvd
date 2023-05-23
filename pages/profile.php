@@ -151,6 +151,7 @@
                     <!-- skrypt PHP -->
                     <?php
                     $resultVideos = $database_connection -> query("SELECT videos.* FROM videos, rental_data WHERE videos.id = rental_data.id_film AND rental_data.id_user = $idUser AND rental_data.isReturned = 0");
+
                     function resultToArray($result) {
                         $rows = array();
                         while($row = $result->fetch_assoc()) {
@@ -161,19 +162,25 @@
                     $readVideos = resultToArray($resultVideos);
                     foreach ($readVideos as $index=>$value)
                     {
+                        $idOfEntity = $readVideos[$index]['id'];
                         $title = $readVideos[$index]['title'];
                         $photoDirectory = $readVideos[$index]['photoDirectory'];
-                        echo "
+                        ?>
                         <div class='col-md-5 mb-2 w-50'>
                                 <div class='card h-100'>
                                     <div class='card-body'>        
+                                        <?php
+                                        $resultOverdue = $database_connection -> query("SELECT videos.* FROM videos, rental_data WHERE videos.id = rental_data.id_film AND rental_data.id_film = $idOfEntity AND rental_data.id_user = $idUser AND rental_data.isReturned = 0 AND date_of_return < CURDATE()")->fetch_assoc();
+                                        if($resultOverdue!=NULL){?>
+                                            <strong class='d-flex justify-content-center' style="color:red;">PO TERMINIE!</strong><?php
+                                        }?>
                                     </div>
-                                    <div class='card-subtitle' href='#!'><img class='mx-auto d-block col-md-8 mb-3' src='$photoDirectory' alt='...' /></a>
-                                        <h2 class='d-flex card-footer justify-content-center'>$title</h2>
+                                    <div class='card-subtitle' href='#!'><img class='mx-auto d-block col-md-8 mb-3' src='<?=$photoDirectory?>' alt='...' /></a>
+                                        <h2 class='d-flex card-footer justify-content-center'><?=$title?></h2>
                                     </div>  
                                 </div>
-                        </div> ";
-                    }?>
+                        </div>
+                    <?php } ?>
 
                 </div>
             </div>
